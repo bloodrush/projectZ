@@ -19,6 +19,19 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  final user = TextEditingController();
+  final pass = TextEditingController();
+
+
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is disposed
+    user.dispose();
+    pass.dispose();
+    super.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +57,7 @@ class _LoginState extends State<Login> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         TextFormField(
+                          controller: user,
                           decoration: InputDecoration(
                               labelText: 'Username',
                               icon: Padding(
@@ -59,9 +73,10 @@ class _LoginState extends State<Login> {
                           },
                         ),
                         TextFormField(
+                            controller: pass,
                           obscureText: true,
                           decoration: InputDecoration(
-                              labelText: 'Password    ',
+                              labelText: 'Password',
                               icon: Padding(
                                   padding: EdgeInsets.only(top: 15.0),
                                   child: Icon(Icons.lock,
@@ -80,11 +95,12 @@ class _LoginState extends State<Login> {
                             elevation: 5.0,
                             onPressed: () {
                               if (_formKey.currentState.validate()) {
-                                runMutation(
-                                    {'email': 'shano@mail.bg', 'pass': 'test'});
+                                runMutation({'email': user.text, 'pass': pass.text});
 
                                 print(result.errors);
                                 print(result.data);
+                                print(user.text);
+                                print(pass.text);
                               }
                             },
                             child: Text(
