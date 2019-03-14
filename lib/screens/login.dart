@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/flutter_graphql.dart';
+import 'dashboard.dart';
 
 const LOGIN_MUTATION = '''
 mutation Login(\$email:String!, \$pass:String!) {
@@ -111,6 +112,15 @@ class _LoginState extends State<Login> {
                             ),
                           )),
                         ),
+                        RaisedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Dashboard()),
+                              );
+                            },
+                          child: Text('Go forward'),
+                        )
                       ],
                     ),
                   ));
