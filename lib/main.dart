@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HttpLink link = HttpLink(
-      uri: 'http://10.0.2.2:8000/graphql',
+      uri: 'http://192.168.0.106:8000/graphql',
     );
 
     ValueNotifier<GraphQLClient> client = ValueNotifier(
@@ -21,9 +21,10 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
       client: client,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Project Z',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.purple,
         ),
          home: Login(),
       ),
