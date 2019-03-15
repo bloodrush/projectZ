@@ -6,14 +6,14 @@ class Dashboard extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text('Project Z'),
-      ),
+          centerTitle: true,
+          title: Image.asset(
+            'images/logo-locam.png',
+            height: 30.0,
+          )),
       body: Container(
-        child: RaisedButton(
-            child: Text('Go back'),
-            onPressed: null),
+        child: RaisedButton(child: Text('Go back'), onPressed: null),
       ),
     );
   }
-
 }
