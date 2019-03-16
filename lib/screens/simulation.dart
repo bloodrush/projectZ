@@ -162,6 +162,8 @@ class _SimulationPageState extends State<SimulationPage> {
                     )
                   ],
                 ),
+                Container(padding: EdgeInsets.symmetric(horizontal: 20.0), child: Divider( color: Colors.red,),)
+
               ],
             ),
       ),
