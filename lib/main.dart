@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/flutter_graphql.dart';
 
+
+import './screens/simulation.dart';
+import './screens/dashboard.dart';
 import './screens/login.dart';
 
 void main() => runApp(MyApp());
@@ -27,7 +30,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
         ),
-         home: Login(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Login(),
+        '/catalog': (context) => SimulationPage(),
+        '/cart': (context) => Dashboard(),
+      },
       ),
     );
   }
