@@ -24,6 +24,7 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final user = TextEditingController();
   final pass = TextEditingController();
+  var _errorText = '';
 
   @override
   void dispose() {
@@ -63,14 +64,14 @@ class _LoginState extends State<Login> {
               // Box decoration takes a gradient
               gradient: LinearGradient(
                 // Where the linear gradient begins and ends
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
                 // Add one stop for each color. Stops should increase from 0 to 1
                 stops: [0.1, 0.8],
                 colors: [
                   // Colors are easy thanks to Flutter's Colors class.
                   Colors.red,
-                  Colors.red[900],
+                  Colors.red[300],
                 ],
               ),
             ),
@@ -79,6 +80,22 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
               Container(
                   child: Mutation(
+                onCompleted:  (QueryResult data) {
+
+                 
+                  if (data.errors != null) {
+                    setState(() {
+                      this._errorText = data.errors[0].message;
+                    });
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SimulationPage()),
+                    );
+                  }           
+
+                },    
                 options: MutationOptions(
                   document: LOGIN_MUTATION,
                 ),
@@ -126,6 +143,7 @@ class _LoginState extends State<Login> {
                                 }
                               },
                             ),
+                            Center(child: Text(_errorText),),
                             Center(
                               child: Container(
                                   margin: EdgeInsets.only(top: 15.0),
@@ -139,10 +157,7 @@ class _LoginState extends State<Login> {
                                           'pass': pass.text
                                         });
 
-                                        print(result.errors);
-                                        print(result.data);
-                                        print(user.text);
-                                        print(pass.text);
+                         
                                       }
                                     },
                                     child: Text(
