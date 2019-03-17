@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/flutter_graphql.dart';
-import 'dashboard.dart';
-import 'simulation.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'simulation.dart';
 
 const LOGIN_MUTATION = '''
 mutation Login(\$email:String!, \$pass:String!) {
@@ -49,7 +50,7 @@ class _LoginState extends State<Login> {
                 iconSize: 32.0,
               ),
               Image.asset(
-                'images/logo-locam.png',
+                'lib/assets/images/logo-locam.png',
                 height: 30.0,
               ),
               Text(
@@ -70,14 +71,43 @@ class _LoginState extends State<Login> {
                 stops: [0.1, 0.8],
                 colors: [
                   // Colors are easy thanks to Flutter's Colors class.
-                  Colors.red,
                   Colors.red[300],
+                  Colors.red[500],
                 ],
               ),
             ),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+              CarouselSlider(
+                    viewportFraction: 1.0,
+                    aspectRatio: 2.0,
+                    autoPlayInterval: Duration(seconds: 5),
+                    autoPlayAnimationDuration: Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.easeInOutCubic,
+                    pauseAutoPlayOnTouch: Duration(seconds: 3),
+                    autoPlay: true,
+                                    height: 220,
+                                    items: ['one','two'].map((i) {
+                                      return Builder(
+                                        builder: (BuildContext context) {
+                                          return Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            decoration: BoxDecoration(
+                                              color: Colors.transparent
+                                            ),
+                                            child: SizedBox.expand(
+                                              child:  Container(
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: AssetImage('lib/assets/images/$i.jpg'), fit: BoxFit.cover),
+                          ),
+                        ),
+                                            )
+                                          );
+                                        },
+                                      );
+                                    }).toList(),
+                            ),
               Container(
                   child: Mutation(
                 onCompleted:  (QueryResult data) {
@@ -169,26 +199,7 @@ class _LoginState extends State<Login> {
                                     ),
                                   )),
                             ),
-                            RaisedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Dashboard()),
-                                );
-                              },
-                              child: Text('Go forward'),
-                            ),
-                            RaisedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SimulationPage()),
-                                );
-                              },
-                              child: Text('Go to simulation'),
-                            )
+
                           ],
                         ),
                       ));
