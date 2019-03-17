@@ -20,11 +20,11 @@ class LoggedDrawer extends StatelessWidget {
                         Image.asset('lib/assets/images/user.png',height: 90.0,),
                         Center(child:   
                           Row(children: <Widget>[
-                            Text(auth.fistName),
+                            Text(auth.fistName,style: TextStyle(color: Colors.white),),
                             Text(' '),
-                            Text(auth.lastName)
+                            Text(auth.lastName,style: TextStyle(color: Colors.white),)
                         ],),),
-                        Text(auth.email)
+                        Text(auth.email,style: TextStyle(color: Colors.white),)
                     ],),
                   
                   decoration: BoxDecoration(
