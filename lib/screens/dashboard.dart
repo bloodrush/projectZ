@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/DrawerLogged.dart';
+
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: LoggedDrawer(),
       appBar: AppBar(
           centerTitle: true,
-          title: Image.asset(
-            'images/logo-locam.png',
-            height: 30.0,
-          )),
+        backgroundColor: Color.fromRGBO(94, 37, 99, 1),),
       body: Container(
-        child: RaisedButton(child: Text('Go back'), onPressed: null),
+        child: RaisedButton(child: Text('Go back'), onPressed: () {
+          Navigator.pushReplacementNamed(context, '/simulation');
+        }),
       ),
     );
   }

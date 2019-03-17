@@ -3,7 +3,9 @@ import 'package:flutter_graphql/flutter_graphql.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'simulation.dart';
+
+import 'package:scoped_model/scoped_model.dart';
+import '../models/auth.dart';
 
 const LOGIN_MUTATION = '''
 mutation Login(\$email:String!, \$pass:String!) {
@@ -11,6 +13,7 @@ mutation Login(\$email:String!, \$pass:String!) {
     user {
       firstName
       secondName
+      email
     }
   }
 }
@@ -37,7 +40,9 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return ScopedModelDescendant<AuthModel>(
+      builder: (context, child, auth) => 
+      Scaffold(
         drawer: Drawer(
           child: ListView(
               // Important: Remove any padding from the ListView.
@@ -63,7 +68,7 @@ class _LoginState extends State<Login> {
                 ),
                 ListTile(
                   title: Row(      
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.calculator),
                       Text('Calculator',style: TextStyle(fontSize: 20),)
@@ -75,7 +80,7 @@ class _LoginState extends State<Login> {
                 ),
                 ListTile(
                   title: Row(  
-                    mainAxisAlignment: MainAxisAlignment.center,                  
+                    mainAxisAlignment: MainAxisAlignment.start,                  
                     children: <Widget>[
                       Icon(FontAwesomeIcons.building),
                       Text('Offices',style: TextStyle(fontSize: 20),)
@@ -155,15 +160,16 @@ class _LoginState extends State<Login> {
                             ),
               Container(
                   child: Mutation(
-                onCompleted:  (QueryResult data) {
+                onCompleted:  (QueryResult res) {
 
                  
-                  if (data.errors != null) {
+                  if (res.errors != null) {
                     setState(() {
-                      this._errorText = data.errors[0].message;
+                      this._errorText = res.errors[0].message;
                     });
                   } else {
-                      Navigator.pushReplacementNamed(context, '/simulation');
+                    auth.login(res.data['login']);
+                    Navigator.pushReplacementNamed(context, '/simulation');
                   }           
 
                 },    
@@ -276,53 +282,13 @@ class _LoginState extends State<Login> {
 
 
               )),
-//              Row(
-//
-//                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                children: <Widget>[
-//                  IconButton(
-//                    icon: Icon(Icons.home, color: Colors.white,),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),
-//                  IconButton(
-//                    icon: Icon(Icons.mail),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),
-//                  IconButton(
-//                    icon: new Icon(FontAwesomeIcons.twitter),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),
-//                  IconButton(
-//                    icon: new Icon(FontAwesomeIcons.viber),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),IconButton(
-//                    icon: new Icon(FontAwesomeIcons.whatsapp),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),IconButton(
-//                    icon: new Icon(FontAwesomeIcons.facebook),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),
-//                  IconButton(
-//                    padding: EdgeInsets.only(right: 10.0),
-//                    icon: new Icon(FontAwesomeIcons.youtube),
-//                    onPressed: (() => null),
-//                    color: Colors.white,
-//                    iconSize: 28.0,
-//                  ),
-//                ],
-//              )
-            ])));
+
+            ]))),);
   }
 }
+
+
+
+
+
+

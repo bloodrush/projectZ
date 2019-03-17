@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// import '../widgets/DrawerLogged.dart';
+import '../widgets/DrawerLogged.dart';
+
+
 class SimulationPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _SimulationPageState();
@@ -23,19 +27,14 @@ class _SimulationPageState extends State<SimulationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: LoggedDrawer(),
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-        automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: (() => null),
-              color: Colors.white,
-              alignment: Alignment.centerLeft,
-              iconSize: 32.0,
-            ),
+            Text(''),
             Text('SIMULATION', style: TextStyle(fontSize: 18.0)),
             Text(
               '',
@@ -366,15 +365,10 @@ class _SimulationPageState extends State<SimulationPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Container(
-                    margin: EdgeInsets.only(top: 20.0),
-                    child: RaisedButton(
-                        onPressed: () {},
-                        color: Color.fromRGBO(94, 37, 99, 1),
-                        child: Text(
-                          'AGREE & CONTINUE',
-                          style: TextStyle(color: Colors.white),
-                        ))),
+                RaisedButton(
+                   child: Text('AGREE & CONTINUE'), onPressed: () {
+                     Navigator.pushReplacementNamed(context, '/dashboard');
+                   },)
               ],
             )
           ],
