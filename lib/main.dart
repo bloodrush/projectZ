@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Login(),
-        '/catalog': (context) => SimulationPage(),
-        '/cart': (context) => Dashboard(),
+        '/simulation': (context) => SimulationPage(),
+        '/dashboard': (context) => Dashboard(),
       },
       ),
     );

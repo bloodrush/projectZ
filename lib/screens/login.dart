@@ -38,18 +38,62 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Drawer(
+          child: ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  child: Center(
+                    child: Image.asset('lib/assets/images/logo-locam.png', height: 30.0),
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      // Add one stop for each color. Stops should increase from 0 to 1
+                      stops: [0.1, 0.8],
+                      colors: [
+                        // Colors are easy thanks to Flutter's Colors class.
+                          Color.fromRGBO(101, 121, 155, 1),
+                          Color.fromRGBO(94, 37, 99, 1)
+                      ],
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Row(      
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.calculator),
+                      Text('Calculator',style: TextStyle(fontSize: 20),)
+                  ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(  
+                    mainAxisAlignment: MainAxisAlignment.center,                  
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.building),
+                      Text('Offices',style: TextStyle(fontSize: 20),)
+                  ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+              ],
+            ),
+        ),
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(94, 37, 99, 1),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: (() => null),
-                color: Colors.white,
-                alignment: Alignment.centerLeft,
-                iconSize: 32.0,
-              ),
+              Text(''),
               Image.asset(
                 'lib/assets/images/logo-locam.png',
                 height: 30.0,
@@ -119,11 +163,7 @@ class _LoginState extends State<Login> {
                       this._errorText = data.errors[0].message;
                     });
                   } else {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SimulationPage()),
-                    );
+                      Navigator.pushReplacementNamed(context, '/simulation');
                   }           
 
                 },    
