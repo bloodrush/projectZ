@@ -19,10 +19,12 @@ class _SimulationPageState extends State<SimulationPage> {
   double durationMin = 12;
   double durationMax = 60;
   double durationValue = 32;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(94, 37, 99, 1),
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,8 +94,7 @@ class _SimulationPageState extends State<SimulationPage> {
                           setState(() {
                             installmentMax = 900;
                           });
-                        }
-                        else {
+                        } else {
                           setState(() {
                             installmentMax = 600;
                           });
@@ -175,11 +176,24 @@ class _SimulationPageState extends State<SimulationPage> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Divider(
-                color: Colors.red,
+                color: Color.fromRGBO(94, 37, 99, 1),
               ),
             ),
-            Card(
-              color: Colors.blueGrey[700],
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  // Add one stop for each color. Stops should increase from 0 to 1
+                  stops: [0.1, 0.8],
+                  colors: [
+                    // Colors are easy thanks to Flutter's Colors class.
+                    Color.fromRGBO(101, 121, 155, 1),
+                    Color.fromRGBO(94, 37, 99, 1)
+                  ],
+                ),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -273,7 +287,7 @@ class _SimulationPageState extends State<SimulationPage> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Divider(
-                color: Colors.red,
+                color: Color.fromRGBO(94, 37, 99, 1),
               ),
             ),
             Container(
@@ -281,8 +295,9 @@ class _SimulationPageState extends State<SimulationPage> {
                 child: Column(
                   children: <Widget>[
                     Slider(
+
                       divisions: 15,
-                      activeColor: Colors.red,
+                      activeColor: Color.fromRGBO(94, 37, 99, 1),
                       label: 'Amount: ' + amountValue.toStringAsFixed(2),
                       min: amountMin,
                       max: amountMax,
@@ -305,7 +320,7 @@ class _SimulationPageState extends State<SimulationPage> {
                 child: Column(
                   children: <Widget>[
                     Slider(
-                      activeColor: Colors.red,
+                      activeColor: Color.fromRGBO(94, 37, 99, 1),
                       label: 'Installment: ' + installmentValue.toString(),
                       min: installmentMin,
                       max: installmentMax,
@@ -329,7 +344,7 @@ class _SimulationPageState extends State<SimulationPage> {
                 children: <Widget>[
                   Slider(
                     divisions: 48,
-                    activeColor: Colors.red,
+                    activeColor: Color.fromRGBO(94, 37, 99, 1),
                     label: 'Duration: ' + durationValue.toInt().toString(),
                     min: durationMin,
                     max: durationMax,
@@ -351,8 +366,15 @@ class _SimulationPageState extends State<SimulationPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                RaisedButton(
-                   child: Text('AGREE & CONTINUE'))
+                Container(
+                    margin: EdgeInsets.only(top: 20.0),
+                    child: RaisedButton(
+                        onPressed: () {},
+                        color: Color.fromRGBO(94, 37, 99, 1),
+                        child: Text(
+                          'AGREE & CONTINUE',
+                          style: TextStyle(color: Colors.white),
+                        ))),
               ],
             )
           ],

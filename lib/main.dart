@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Project Z',
         theme: ThemeData(
+          fontFamily: 'Montserrat',
           primarySwatch: Colors.deepPurple,
         ),
       initialRoute: '/',
