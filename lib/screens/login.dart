@@ -3,6 +3,8 @@ import 'package:flutter_graphql/flutter_graphql.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../context/localization.dart';
+
 
 import 'package:scoped_model/scoped_model.dart';
 import '../models/auth.dart';
@@ -72,7 +74,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.calculator, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Calculator',style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text(DemoLocalizations.of(context).calculator,style: TextStyle(fontSize: 20),))
 
                   ],),
                   onTap: () {
@@ -85,7 +87,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.building, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Offices',style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text(DemoLocalizations.of(context).offices,style: TextStyle(fontSize: 20),))
                   ],),
                   onTap: () {
                     // Update the state of the app
@@ -97,7 +99,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.searchLocation, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Contacts',style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text(DemoLocalizations.of(context).offices,style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
                     // Update the state of the app
@@ -111,7 +113,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.signOutAlt, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Exit application',style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text(DemoLocalizations.of(context).exit,style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
                     // Update the state of the app
@@ -120,7 +122,7 @@ class _LoginState extends State<Login> {
                 ),
                 Container( padding: EdgeInsets.symmetric(horizontal: 20.0),
                   child: Divider(),),
-                Container (margin:EdgeInsets.only(left:10.0, top: 20.0, bottom: 20.0), child: Text('External links:'),),
+                Container (margin:EdgeInsets.only(left:10.0, top: 20.0, bottom: 20.0), child: Text(DemoLocalizations.of(context).ext),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
                   children: <Widget>[
@@ -144,7 +146,7 @@ class _LoginState extends State<Login> {
                 height: 30.0,
               ),
               Text(
-                'FR',
+                 DemoLocalizations.of(context).locale.countryCode,
                 style: TextStyle(fontSize: 18.0),
               )
             ],
@@ -238,7 +240,7 @@ class _LoginState extends State<Login> {
                                   controller: user,
                                   decoration: InputDecoration(
                                       border: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                                      labelText: 'Username',
+                                      labelText: DemoLocalizations.of(context).username,
                                       icon: Padding(
                                           padding: EdgeInsets.only(top: 15.0),
                                           child: Icon(
@@ -247,7 +249,7 @@ class _LoginState extends State<Login> {
                                           ))),
                                   validator: (value) {
                                     if (value.isEmpty) {
-                                      return 'Please enter your username';
+                                      return DemoLocalizations.of(context).enterUser;
                                     }
                                   },
                                 ),
@@ -255,13 +257,13 @@ class _LoginState extends State<Login> {
                                   controller: pass,
                                   obscureText: true,
                                   decoration: InputDecoration(
-                                      labelText: 'Password',
+                                      labelText: DemoLocalizations.of(context).password,
                                       icon: Padding(
                                           padding: EdgeInsets.only(top: 15.0),
                                           child: Icon(Icons.lock, size: 32.0,))),
                                   validator: (value) {
                                     if (value.isEmpty) {
-                                      return 'Please enter your password';
+                                      return DemoLocalizations.of(context).enterPass;
                                     }
                                   },
                                 ),
@@ -282,7 +284,7 @@ class _LoginState extends State<Login> {
                                           }
                                         },
                                         child: Text(
-                                          'LOGIN',
+                                         DemoLocalizations.of(context).login,
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 20.0
@@ -298,7 +300,7 @@ class _LoginState extends State<Login> {
                 },
               )),
               Center(
-                  child: Text('Forgot password?', style: TextStyle(fontStyle: FontStyle.italic, decoration: TextDecoration.underline , color: Colors.white),),
+                  child: Text(DemoLocalizations.of(context).forgot, style: TextStyle(fontStyle: FontStyle.italic, decoration: TextDecoration.underline , color: Colors.white),),
                 ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_graphql/flutter_graphql.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import 'context/localization.dart';
 
 import "./models/auth.dart";
 import './screens/simulation.dart';
@@ -35,6 +38,16 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
       client: client,
       child: MaterialApp(
+      onGenerateTitle: (BuildContext context) => DemoLocalizations.of(context).title,
+      localizationsDelegates: [
+        const DemoLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'EN'),
+        const Locale('fr', 'FR'),
+      ],
         debugShowCheckedModeBanner: false,
         title: 'Project Z',
         theme: ThemeData(

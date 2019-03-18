@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 // import '../widgets/DrawerLogged.dart';
 import '../widgets/DrawerLogged.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FormPage extends StatefulWidget {
   @override
@@ -85,7 +84,7 @@ class _FormPageState extends State<FormPage> {
                             textCapitalization: TextCapitalization.words,
                             decoration: InputDecoration(
                               suffixIcon: IconButton(
-                                icon: Icon(Icons.search),
+                                icon: Icon(Icons.search), onPressed: () {},
 //                                onPressed: _showDialog(),
                               ),
                             )
