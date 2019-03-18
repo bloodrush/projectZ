@@ -43,6 +43,7 @@ class _LoginState extends State<Login> {
     return ScopedModelDescendant<AuthModel>(
       builder: (context, child, auth) =>
       Scaffold(
+        resizeToAvoidBottomInset: true,
         drawer: Drawer(
           child: ListView(
               // Important: Remove any padding from the ListView.
@@ -149,7 +150,11 @@ class _LoginState extends State<Login> {
             ],
           ),
         ),
-        body: Container(
+        body: ListView(
+          children: <Widget>[
+            Stack(children: <Widget>[
+              Container(
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               // Box decoration takes a gradient
               gradient: LinearGradient(
@@ -322,7 +327,10 @@ class _LoginState extends State<Login> {
 
               )),
 
-            ]))),);
+            ]))
+            ],)
+          ],
+        )),);
   }
 }
 
