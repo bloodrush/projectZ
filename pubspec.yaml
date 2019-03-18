@@ -48,7 +48,7 @@ flutter:
     - lib/assets/images/one.jpg
     - lib/assets/images/two.jpg
     - lib/assets/images/user.png
-
+    - lib/assets/images/login_foreground.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
 

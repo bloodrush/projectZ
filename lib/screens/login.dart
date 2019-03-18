@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return ScopedModelDescendant<AuthModel>(
-      builder: (context, child, auth) => 
+      builder: (context, child, auth) =>
       Scaffold(
         drawer: Drawer(
           child: ListView(
@@ -67,11 +67,12 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 ListTile(
-                  title: Row(      
+                  title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(FontAwesomeIcons.calculator),
-                      Text('Calculator',style: TextStyle(fontSize: 20),)
+                      Icon(FontAwesomeIcons.calculator, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Calculator',style: TextStyle(fontSize: 20),))
+
                   ],),
                   onTap: () {
                     // Update the state of the app
@@ -79,17 +80,55 @@ class _LoginState extends State<Login> {
                   },
                 ),
                 ListTile(
-                  title: Row(  
-                    mainAxisAlignment: MainAxisAlignment.start,                  
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(FontAwesomeIcons.building),
-                      Text('Offices',style: TextStyle(fontSize: 20),)
+                      Icon(FontAwesomeIcons.building, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Offices',style: TextStyle(fontSize: 20),))
                   ],),
                   onTap: () {
                     // Update the state of the app
                     // ...
                   },
                 ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.searchLocation, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Contacts',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                Container( padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Divider(),),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.signOutAlt, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Exit application',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                Container( padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Divider(),),
+                Container (margin:EdgeInsets.only(left:10.0, top: 20.0, bottom: 20.0), child: Text('External links:'),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+                  children: <Widget>[
+                  Icon(FontAwesomeIcons.home, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                  Icon(FontAwesomeIcons.envelope, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                  Icon(FontAwesomeIcons.facebook, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                  Icon(FontAwesomeIcons.twitter, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                  Icon(FontAwesomeIcons.youtube, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                ],)
               ],
             ),
         ),
@@ -162,7 +201,7 @@ class _LoginState extends State<Login> {
                   child: Mutation(
                 onCompleted:  (QueryResult res) {
 
-                 
+
                   if (res.errors != null) {
                     setState(() {
                       this._errorText = res.errors[0].message;
@@ -170,9 +209,9 @@ class _LoginState extends State<Login> {
                   } else {
                     auth.login(res.data['login']);
                     Navigator.pushReplacementNamed(context, '/simulation');
-                  }           
+                  }
 
-                },    
+                },
                 options: MutationOptions(
                   document: LOGIN_MUTATION,
                 ),
