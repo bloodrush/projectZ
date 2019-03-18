@@ -378,11 +378,29 @@ class _SimulationPageState extends State<SimulationPage> {
                             ),
                             onPressed: () {
                               Navigator.pushReplacementNamed(
+                                  context, '/form');
+                            },
+                          )),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Container(
+                          margin: EdgeInsets.only(top: 20.0),
+                          child: RaisedButton(
+                            color: Color.fromRGBO(94, 37, 99, 1),
+                            child: Text(
+                              'AGREE & CONTINUE',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
                                   context, '/dashboard');
                             },
                           )),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

@@ -6,6 +6,7 @@ import "./models/auth.dart";
 import './screens/simulation.dart';
 import './screens/dashboard.dart';
 import './screens/login.dart';
+import './screens/form.dart';
 
 void main() {
   final auth = AuthModel();
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => Login(),
         '/simulation': (context) => SimulationPage(),
-        '/dashboard': (context) => Dashboard(),
+//        '/dashboard': (context) => MyHomePage(),
+        '/form': (context) => FormPage()
       },
       ),
     );

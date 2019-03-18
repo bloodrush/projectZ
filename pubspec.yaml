@@ -27,6 +27,7 @@ dependencies:
   flutter_graphql: ^1.0.0-rc.1
   carousel_slider: ^1.1.0
   font_awesome_flutter: ^8.4.0
+  charts_flutter: ^0.6.0
 
 dev_dependencies:
   flutter_test:

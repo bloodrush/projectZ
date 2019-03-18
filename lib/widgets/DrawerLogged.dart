@@ -42,17 +42,116 @@ class LoggedDrawer extends StatelessWidget {
                   ),
                 ),
                 ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.info, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Information',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.certificate, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Solutions',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.exchangeAlt, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Transfer',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.quoteRight, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Offers',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.calculator, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Calculator',style: TextStyle(fontSize: 20),))
+
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.building, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Offices',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                ListTile(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Icon(FontAwesomeIcons.searchLocation, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Contacts',style: TextStyle(fontSize: 20),))
+                    ],),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                  },
+                ),
+                Container( padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Divider(),),
+                ListTile(
                   title: Row(      
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(FontAwesomeIcons.signOutAlt),
-                      Text('Log out',style:  TextStyle(fontSize: 20),)
+                      Icon(FontAwesomeIcons.signOutAlt, color: Color.fromRGBO(94, 37, 99, 1)),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Log out',style: TextStyle(fontSize: 20),))
                   ],),
                   onTap: () {
                       auth.logout();
                       Navigator.pushReplacementNamed(context, '/');
                   },
                 ),
+                Container( padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Divider(),),
+                Container (margin:EdgeInsets.only(left:10.0, top: 20.0, bottom: 20.0), child: Text('External links:'),),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.home, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                    Icon(FontAwesomeIcons.envelope, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                    Icon(FontAwesomeIcons.facebook, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                    Icon(FontAwesomeIcons.twitter, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                    Icon(FontAwesomeIcons.youtube, color: Color.fromRGBO(101, 121, 155, 1) ,),
+                  ],)
               ],
             ),
         ),
