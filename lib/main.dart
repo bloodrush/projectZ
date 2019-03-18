@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => Login(),
         '/simulation': (context) => SimulationPage(),
-//        '/dashboard': (context) => MyHomePage(),
+        '/dashboard': (context) => AnimatedPieChartExample(),
         '/form': (context) => FormPage()
       },
       ),

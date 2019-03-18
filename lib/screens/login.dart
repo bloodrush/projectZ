@@ -208,7 +208,7 @@ class _LoginState extends State<Login> {
                     });
                   } else {
                     auth.login(res.data['login']);
-                    Navigator.pushReplacementNamed(context, '/simulation');
+                    Navigator.pushReplacementNamed(context, '/dashboard');
                   }
 
                 },

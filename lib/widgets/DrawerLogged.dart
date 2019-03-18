@@ -45,12 +45,11 @@ class LoggedDrawer extends StatelessWidget {
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Icon(FontAwesomeIcons.info, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Information',style: TextStyle(fontSize: 20),))
+                      Icon(FontAwesomeIcons.chartPie, color: Color.fromRGBO(94, 37, 99, 1) ,),
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Dashboard',style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
-                    // Update the state of the app
-                    // ...
+                    Navigator.pushReplacementNamed(context, '/dashboard');
                   },
                 ),
                 ListTile(
@@ -58,9 +57,10 @@ class LoggedDrawer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.certificate, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Solutions',style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Simulation',style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
+                    Navigator.pushReplacementNamed(context, '/simulation');
                     // Update the state of the app
                     // ...
                   },

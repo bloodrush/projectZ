@@ -1,88 +1,93 @@
-//import 'package:flutter/material.dart';
-//import 'package:charts_flutter/flutter.dart' as charts;
-//
-//class MyHomePage extends StatefulWidget {
-//  MyHomePage({Key key, this.title}) : super(key: key);
-//
-//  final String title;
-//
-//  @override
-//  _MyHomePageState createState() => new _MyHomePageState();
-//}
-//
-//class ClicksPerYear {
-//  final String year;
-//  final int clicks;
-//  final charts.Color color;
-//
-//  ClicksPerYear(this.year, this.clicks, Color color)
-//      : this.color = new charts.Color(
-//      r: color.red, g: color.green, b: color.blue, a: color.alpha);
-//}
-//
-//class _MyHomePageState extends State<MyHomePage> {
-//  int _counter = 0;
-//
-//  void _incrementCounter() {
-//    setState(() {
-//      _counter++;
-//    });
-//  }
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    var data = [
-//      new ClicksPerYear('2016', 12, Colors.red),
-//      new ClicksPerYear('2017', 42, Colors.yellow),
-//      new ClicksPerYear('2018', _counter, Colors.green),
-//    ];
-//
-//    var series = [
-//      new charts.Series(
-//        domainFn: (ClicksPerYear clickData, _) => clickData.year,
-//        measureFn: (ClicksPerYear clickData, _) => clickData.clicks,
-//        colorFn: (ClicksPerYear clickData, _) => clickData.color,
-//        id: 'Clicks',
-//        data: data,
-//      ),
-//    ];
-//
-//    var chart = new charts.BarChart<ClicksPerYear>(
-//      series,
-//      animate: true,
-//    );
-//    var chartWidget = new Padding(
-//      padding: new EdgeInsets.all(32.0),
-//      child: new SizedBox(
-//        height: 200.0,
-//        child: chart,
-//      ),
-//    );
-//
-//    return new Scaffold(
-//      appBar: new AppBar(
-//        title: new Text(widget.title),
-//      ),
-//      body: new Center(
-//        child: new Column(
-//          mainAxisAlignment: MainAxisAlignment.center,
-//          children: <Widget>[
-//            new Text(
-//              'You have pushed the button this many times:',
-//            ),
-//            new Text(
-//              '$_counter',
-//              style: Theme.of(context).textTheme.display1,
-//            ),
-//            chartWidget,
-//          ],
-//        ),
-//      ),
-//      floatingActionButton: new FloatingActionButton(
-//        onPressed: _incrementCounter,
-//        tooltip: 'Increment',
-//        child: new Icon(Icons.add),
-//      ),
-//    );
-//  }
-//}
+import 'package:flutter/material.dart';
+import 'package:flutter_circular_chart/flutter_circular_chart.dart';
+import '../widgets/DrawerLogged.dart';
+
+final List<List<CircularStackEntry>> _quarterlyProfitPieData = [
+  <CircularStackEntry>[
+    new CircularStackEntry(
+      <CircularSegmentEntry>[
+        new CircularSegmentEntry(500.0,  Colors.purpleAccent[700], rankKey: 'Q1'),
+        new CircularSegmentEntry(1000.0, Colors.blueGrey, rankKey: 'Q2'),
+        new CircularSegmentEntry(2000.0, Colors.deepPurple[800], rankKey: 'Q3'),
+      ],
+      rankKey: 'Quarterly Profits',
+    ),
+  ],
+  <CircularStackEntry>[
+    new CircularStackEntry(
+      <CircularSegmentEntry>[
+        new CircularSegmentEntry(1500.0, Colors.purpleAccent[700], rankKey: 'Q1'),
+        new CircularSegmentEntry(750.0,  Colors.blueGrey, rankKey: 'Q2'),
+        new CircularSegmentEntry(2000.0, Colors.deepPurple[800], rankKey: 'Q3'),
+      ],
+      rankKey: 'Quarterly Profits',
+    ),
+  ],
+  <CircularStackEntry>[
+    new CircularStackEntry(
+      <CircularSegmentEntry>[
+        new CircularSegmentEntry(1800.0,  Colors.purpleAccent[700], rankKey: 'Q1'),
+        new CircularSegmentEntry(2900.0,  Colors.blueGrey, rankKey: 'Q2'),
+        new CircularSegmentEntry(4000.0,  Colors.deepPurple[800], rankKey: 'Q3'),
+      ],
+      rankKey: 'Quarterly Profits',
+    ),
+  ],
+];
+
+class AnimatedPieChartExample extends StatefulWidget {
+  @override
+  _AnimatedPieChartExampleState createState() =>
+      new _AnimatedPieChartExampleState();
+}
+
+class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
+  final GlobalKey<AnimatedCircularChartState> _chartKey =
+  new GlobalKey<AnimatedCircularChartState>();
+  final _chartSize = const Size(300.0, 300.0);
+  int sampleIndex = 0;
+
+  void _cycleSamples() {
+    setState(() {
+      sampleIndex++;
+      List<CircularStackEntry> data = _quarterlyProfitPieData[sampleIndex % 3];
+      _chartKey.currentState.updateData(data);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      drawer: LoggedDrawer(),
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Color.fromRGBO(94, 37, 99, 1),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(''),
+            Text('CLIENT INFO', style: TextStyle(fontSize: 18.0)),
+            Text(
+              '',
+              style: TextStyle(fontSize: 18.0),
+            )
+          ],
+        ),
+      ),
+      body: new Center(
+        child: new AnimatedCircularChart(
+          edgeStyle: SegmentEdgeStyle.round,
+          key: _chartKey,
+          size: _chartSize,
+          initialChartData: _quarterlyProfitPieData[0],
+          chartType: CircularChartType.Radial,
+          holeLabel: 'Provided amounts',
+        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        child: new Icon(Icons.refresh),
+        onPressed: _cycleSamples,
+      ),
+    );
+  }
+}
