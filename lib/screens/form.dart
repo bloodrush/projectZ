@@ -167,12 +167,13 @@ class _FormPageState extends State<FormPage> {
                               'SUBMIT',
                               style: TextStyle(color: Colors.white),
                             ),
-                            onPressed: () {
-                              final snackBar = SnackBar(
-                                  content:
-                                  Text('You request has been submitted.'));
-                              _scaffoldKey.currentState.showSnackBar(snackBar);
-                            },
+onPressed: _showDialog,
+//                            onPressed: () {
+//                              final snackBar = SnackBar(
+//                                  content:
+//                                  Text('You request has been submitted.'));
+//                              _scaffoldKey.currentState.showSnackBar(snackBar);
+//                            },
                           )
                         ])),
               ],
@@ -183,15 +184,15 @@ class _FormPageState extends State<FormPage> {
     );
   }
 
-  Future _showDialog() {
+  dynamic _showDialog() {
     // flutter defined function
     showDialog(
       context: context,
       builder: (BuildContext context) {
         // return object of type Dialog
         return AlertDialog(
-          title: new Text("Alert Dialog title"),
-          content: new Text("Alert Dialog body"),
+          title: new Text("Leasing simulation"),
+          content: new Text("Do you confirm you chose this plan?"),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             new FlatButton(

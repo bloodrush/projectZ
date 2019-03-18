@@ -23,6 +23,40 @@ class _SimulationPageState extends State<SimulationPage> {
   double durationMax = 60;
   double durationValue = 32;
 
+
+  dynamic _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Leasing simulation"),
+          content: new Text("Do you confirm you chose this plan?"),
+          actions: <Widget>[
+            Row(
+              children: <Widget>[
+                new FlatButton(
+                  child: new Text("Close"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                new FlatButton(
+                  child: new Text("Confirm"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/form');
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+//    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,6 +215,7 @@ class _SimulationPageState extends State<SimulationPage> {
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.only(bottom: 5.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       gradient: LinearGradient(
@@ -198,90 +233,90 @@ class _SimulationPageState extends State<SimulationPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 5.0, vertical: 5.0),
-                          child: Column(
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(Icons.monetization_on),
-                                onPressed: (() => null),
-                                color: Colors.white,
-                                iconSize: 36.0,
-                              ),
-                              Text(
-                                'Amount',
-                                style: TextStyle(color: Colors.blueGrey[100]),
-                              ),
-                              Text(amountValue.toStringAsFixed(2),
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20.0)),
-                            ],
+                        Expanded(
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.monetization_on),
+                                  onPressed: (() => null),
+                                  color: Colors.white,
+                                  iconSize: 36.0,
+                                ),
+                                Text(
+                                  'Amount',
+                                  style: TextStyle(color: Colors.blueGrey[100]),
+                                ),
+                                Text(amountValue.toStringAsFixed(2),
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18.0)),
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 5.0, vertical: 5.0),
-                          child: Column(
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(Icons.history),
-                                onPressed: (() => null),
-                                color: Colors.white,
-                                iconSize: 36.0,
-                              ),
-                              Text(
-                                'Installment',
-                                style: TextStyle(color: Colors.blueGrey[100]),
-                              ),
-                              Text(installmentValue.toStringAsFixed(2),
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20.0)),
-                            ],
+                        Expanded(
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.history),
+                                  onPressed: (() => null),
+                                  color: Colors.white,
+                                  iconSize: 36.0,
+                                ),
+                                Text(
+                                  'Installment',
+                                  style: TextStyle(color: Colors.blueGrey[100]),
+                                ),
+                                Text(installmentValue.toStringAsFixed(2),
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18.0)),
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 5.0, vertical: 5.0),
-                          child: Column(
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(Icons.calendar_today),
-                                onPressed: (() => null),
-                                color: Colors.white,
-                                iconSize: 36.0,
-                              ),
-                              Text(
-                                'Duration',
-                                style: TextStyle(color: Colors.blueGrey[100]),
-                              ),
-                              Text(durationValue.toInt().toString(),
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20.0)),
-                            ],
+                        Expanded(
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.calendar_today),
+                                  onPressed: (() => null),
+                                  color: Colors.white,
+                                  iconSize: 36.0,
+                                ),
+                                Text(
+                                  'Duration',
+                                  style: TextStyle(color: Colors.blueGrey[100]),
+                                ),
+                                Text(durationValue.toInt().toString(),
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18.0)),
+                              ],
+                            ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 5.0, vertical: 5.0),
-                          child: Column(
-                            children: <Widget>[
-                              IconButton(
-                                icon: Icon(Icons.functions),
-                                onPressed: (() => null),
-                                color: Colors.white,
-                                iconSize: 36.0,
-                              ),
-                              Text(
-                                'Total',
-                                style: TextStyle(color: Colors.blueGrey[100]),
-                              ),
-                              Text((amountValue * 1.1).toStringAsFixed(2),
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20.0)),
-                            ],
+                        Expanded(
+                          child: Container(
+                            child: Column(
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.functions),
+                                  onPressed: (() => null),
+                                  color: Colors.white,
+                                  iconSize: 36.0,
+                                ),
+                                Text(
+                                  'Total',
+                                  style: TextStyle(color: Colors.blueGrey[100]),
+                                ),
+                                Text((amountValue * 1.1).toStringAsFixed(2),
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 18.0)),
+                              ],
+                            ),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),
@@ -376,10 +411,7 @@ class _SimulationPageState extends State<SimulationPage> {
                               'AGREE & CONTINUE',
                               style: TextStyle(color: Colors.white),
                             ),
-                            onPressed: () {
-                              Navigator.pushReplacementNamed(
-                                  context, '/form');
-                            },
+                            onPressed: _showDialog
                           )),
                     ],
                   ),
