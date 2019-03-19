@@ -35,6 +35,7 @@ final List<List<CircularStackEntry>> _quarterlyProfitPieData = [
   ],
 ];
 
+
 class AnimatedPieChartExample extends StatefulWidget {
   @override
   _AnimatedPieChartExampleState createState() =>
@@ -46,6 +47,9 @@ class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
   new GlobalKey<AnimatedCircularChartState>();
   final _chartSize = const Size(300.0, 300.0);
   int sampleIndex = 0;
+
+
+
 
   void _cycleSamples() {
     setState(() {
@@ -74,16 +78,69 @@ class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
           ],
         ),
       ),
-      body: new Center(
-        child: new AnimatedCircularChart(
-          edgeStyle: SegmentEdgeStyle.round,
-          key: _chartKey,
-          size: _chartSize,
-          initialChartData: _quarterlyProfitPieData[0],
-          chartType: CircularChartType.Radial,
-          holeLabel: 'Provided amounts',
-        ),
+      body: new Column(
+        children: <Widget>[
+          Center(
+            child: new AnimatedCircularChart(
+              edgeStyle: SegmentEdgeStyle.round,
+              key: _chartKey,
+              size: _chartSize,
+              initialChartData: _quarterlyProfitPieData[0],
+              chartType: CircularChartType.Radial,
+              holeLabel: 'Quarterly amounts',
+            ),
+          ),
+          Row(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                width: 40.0,
+                height: 20.0,
+                decoration: BoxDecoration(
+                  color: Colors.purpleAccent[700],
+                  border: Border.all(width: 1.0, color: Colors.black54)
+                ),
+              ),
+              Text('January'),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                width: 40.0,
+                height: 20.0,
+                decoration: BoxDecoration(
+                    color: Colors.blueGrey,
+                    border: Border.all(width: 1.0, color: Colors.black54)
+                ),
+              ),
+              Text('February'),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10.0),
+                width: 40.0,
+                height: 20.0,
+                decoration: BoxDecoration(
+                    color: Colors.deepPurple[800],
+                    border: Border.all(width: 1.0, color: Colors.black54)
+                ),
+              ),
+              Text('March'),
+
+            ],
+          ),
+          Center(
+            child: new AnimatedCircularChart(
+              key: _chartKey,
+              size: _chartSize,
+              initialChartData: _quarterlyProfitPieData[0],
+              chartType: CircularChartType.Pie,
+              holeLabel: 'Quarterly amounts',
+            ),
+          ),
+
+        ],
+
+
+
       ),
+
       floatingActionButton: new FloatingActionButton(
         child: new Icon(Icons.refresh),
         onPressed: _cycleSamples,
