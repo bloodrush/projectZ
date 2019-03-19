@@ -166,13 +166,12 @@ class _FormPageState extends State<FormPage> {
                               'SUBMIT',
                               style: TextStyle(color: Colors.white),
                             ),
-onPressed: _showDialog,
-//                            onPressed: () {
-//                              final snackBar = SnackBar(
-//                                  content:
-//                                  Text('You request has been submitted.'));
-//                              _scaffoldKey.currentState.showSnackBar(snackBar);
-//                            },
+                            onPressed: () {
+                              final snackBar = SnackBar(
+                                  content:
+                                  Text('You request has been submitted.'));
+                              _scaffoldKey.currentState.showSnackBar(snackBar);
+                            },
                           )
                         ])),
               ],

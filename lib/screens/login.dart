@@ -99,7 +99,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.searchLocation, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text(DemoLocalizations.of(context).offices,style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text(DemoLocalizations.of(context).contacts,style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
                     // Update the state of the app
