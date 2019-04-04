@@ -1,7 +1,7 @@
 import 'package:scoped_model/scoped_model.dart';
 
 class AuthModel extends Model {
-   var _isLogged = false;
+   bool _isLogged = false;
    String _firstName = '';
    String _lastName  = '';
    String _email = '';

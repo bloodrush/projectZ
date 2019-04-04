@@ -71,13 +71,13 @@ class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
   final _chartSize = const Size(250.0, 250.0);
   int sampleIndex = 0;
 
-  void _cycleSamples() {
-    setState(() {
-      sampleIndex++;
-      List<CircularStackEntry> data = _quarterlyProfitPieData[sampleIndex % 3];
-      _chartKey.currentState.updateData(data);
-    });
-  }
+  // void _cycleSamples() {
+  //   setState(() {
+  //     sampleIndex++;
+  //     List<CircularStackEntry> data = _quarterlyProfitPieData[sampleIndex % 3];
+  //     _chartKey.currentState.updateData(data);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

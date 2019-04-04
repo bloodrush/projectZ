@@ -73,6 +73,7 @@ class LoggedDrawer extends StatelessWidget {
                       Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Transfer',style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
+                    Navigator.pushReplacementNamed(context, '/cashflow');
                     // Update the state of the app
                     // ...
                   },

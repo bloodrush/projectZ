@@ -10,6 +10,7 @@ import './screens/simulation.dart';
 import './screens/dashboard.dart';
 import './screens/login.dart';
 import './screens/form.dart';
+import './screens/cashFlow.dart';
 
 void main() {
   final auth = AuthModel();
@@ -46,8 +47,8 @@ class MyApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
         ],
         supportedLocales: [
-          const Locale('en', 'EN'),
-          const Locale('fr', 'FR'),
+          const Locale('en', 'en_US'),
+          const Locale('fr', 'fr_FR'),
         ],
         debugShowCheckedModeBanner: false,
         title: 'Project Z',
@@ -60,7 +61,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => Login(),
           '/simulation': (context) => SimulationPage(),
           '/dashboard': (context) => Dashboard(),
-          '/form': (context) => FormPage()
+          '/form': (context) => FormPage(),
+          '/cashflow': (context) => CashFlow()
         },
       ),
     );
