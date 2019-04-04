@@ -38,31 +38,31 @@ class MyApp extends StatelessWidget {
     return GraphQLProvider(
       client: client,
       child: MaterialApp(
-      onGenerateTitle: (BuildContext context) => DemoLocalizations.of(context).title,
-      localizationsDelegates: [
-        const DemoLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: [
-        const Locale('en', 'EN'),
-        const Locale('fr', 'FR'),
-      ],
+        onGenerateTitle: (BuildContext context) =>
+            DemoLocalizations.of(context).title,
+        localizationsDelegates: [
+          const DemoLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en', 'EN'),
+          const Locale('fr', 'FR'),
+        ],
         debugShowCheckedModeBanner: false,
         title: 'Project Z',
         theme: ThemeData(
           fontFamily: 'Montserrat',
           primarySwatch: Colors.deepPurple,
         ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => Login(),
-        '/simulation': (context) => SimulationPage(),
-        '/dashboard': (context) => AnimatedPieChartExample(),
-        '/form': (context) => FormPage()
-      },
+        initialRoute: '/',
+        routes: {
+          '/': (context) => Login(),
+          '/simulation': (context) => SimulationPage(),
+          '/dashboard': (context) => Dashboard(),
+          '/form': (context) => FormPage()
+        },
       ),
     );
   }
 }
-
