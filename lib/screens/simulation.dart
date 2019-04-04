@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-// import '../widgets/DrawerLogged.dart';
 import '../widgets/DrawerLogged.dart';
 
 class SimulationPage extends StatefulWidget {
