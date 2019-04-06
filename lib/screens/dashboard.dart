@@ -3,6 +3,8 @@ import '../widgets/DrawerLogged.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'simulation.dart';
 
+import '../widgets/cashFlow.dart';
+
 class Dashboard extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _Dashboard();
@@ -12,7 +14,7 @@ class _Dashboard extends State<Dashboard> {
   int _selectedIndex = 0;
   final _widgetOptions = [
     SimulationPage(),
-    Text('Index 1: Business'),
+    CashFlow(),
     Text('Index 2: School'),
   ];
 
@@ -43,37 +45,30 @@ class _Dashboard extends State<Dashboard> {
             ],
           ),
         ),
-        body: new Center(
-            child: _widgetOptions.elementAt(_selectedIndex)
-        ),
+        body: new Center(child: _widgetOptions.elementAt(_selectedIndex)),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          type: BottomNavigationBarType.shifting,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(OMIcons.home),
-              title: new Text('Your status'),
-              activeIcon: Icon(Icons.home),
-              backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-            ),
-            BottomNavigationBarItem(
-              activeIcon:
-                  Icon(Icons.calendar_today),
-              icon: Icon(OMIcons.calendarToday),
-              title: new Text('Cash flow'),
-              backgroundColor: Color.fromRGBO(64, 37, 99, 1),
-            ),
-            BottomNavigationBarItem(
-              activeIcon:
-                  Icon(Icons.pie_chart),
-              icon: Icon(OMIcons.pieChart),
-              title: new Text('Charts'),
-              backgroundColor: Color.fromRGBO(34, 37, 99, 1),
-            ),
-          ],
-          onTap: _onItemTapped
-        ));
+            currentIndex: _selectedIndex,
+            type: BottomNavigationBarType.shifting,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(OMIcons.home),
+                title: new Text('Your status'),
+                activeIcon: Icon(Icons.home),
+                backgroundColor: Color.fromRGBO(94, 37, 99, 1),
+              ),
+              BottomNavigationBarItem(
+                activeIcon: Icon(Icons.calendar_today),
+                icon: Icon(OMIcons.calendarToday),
+                title: new Text('Cash flow'),
+                backgroundColor: Color.fromRGBO(64, 37, 99, 1),
+              ),
+              BottomNavigationBarItem(
+                activeIcon: Icon(Icons.pie_chart),
+                icon: Icon(OMIcons.pieChart),
+                title: new Text('Charts'),
+                backgroundColor: Color.fromRGBO(34, 37, 99, 1),
+              ),
+            ],
+            onTap: _onItemTapped));
   }
-
-
 }

@@ -10,7 +10,6 @@ import './screens/simulation.dart';
 import './screens/dashboard.dart';
 import './screens/login.dart';
 import './screens/form.dart';
-import './screens/cashFlow.dart';
 
 void main() {
   final auth = AuthModel();
@@ -62,7 +61,6 @@ class MyApp extends StatelessWidget {
           '/simulation': (context) => SimulationPage(),
           '/dashboard': (context) => Dashboard(),
           '/form': (context) => FormPage(),
-          '/cashflow': (context) => CashFlow()
         },
       ),
     );
