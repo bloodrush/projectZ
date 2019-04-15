@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_graphql/flutter_graphql.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -24,17 +24,21 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    HttpLink link = HttpLink(
+    final HttpLink httpLink = HttpLink(
       uri: 'https://locamz-lvjupvjtsk.now.sh/graphql',
-      // uri: 'http://10.0.2.2:8000/graphql'
     );
+
+
+
+
 
     ValueNotifier<GraphQLClient> client = ValueNotifier(
       GraphQLClient(
         cache: InMemoryCache(),
-        link: link,
+        link: httpLink,
       ),
     );
+
     return GraphQLProvider(
       client: client,
       child: MaterialApp(
