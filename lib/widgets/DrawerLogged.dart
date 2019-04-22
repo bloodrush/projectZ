@@ -70,10 +70,10 @@ class LoggedDrawer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Icon(FontAwesomeIcons.exchangeAlt, color: Color.fromRGBO(94, 37, 99, 1) ,),
-                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Transfer',style: TextStyle(fontSize: 20),))
+                      Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Statements',style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, '/cashflow');
+                    Navigator.pushReplacementNamed(context, '/statements');
                     // Update the state of the app
                     // ...
                   },
