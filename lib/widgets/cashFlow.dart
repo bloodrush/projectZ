@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../context/localization.dart';
+import '../services/cashFlowsService.dart';
 
 class CashFlow extends StatefulWidget {
   final String test;
@@ -17,10 +18,15 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
   Map<DateTime, List> _visibleEvents;
   List _selectedEvents;
   AnimationController _controller;
+  Future _test;
+
+
+  
 
   @override
   void initState() {
     super.initState();
+    _test = loadCashFlow();
     _selectedDay = DateTime.now();
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
@@ -84,7 +90,12 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     );
 
     _controller.forward();
+    print(_test);
+    // loadCashFlow().then((res) => {
+    //   print(res)
+    // });
   }
+
 
   void _onDaySelected(DateTime day, List events) {
     setState(() {

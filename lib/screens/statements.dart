@@ -16,7 +16,7 @@ class StatementsPageState extends State<StatementsPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+  
     return Scaffold(
       drawer: LoggedDrawer(),
       appBar: AppBar(
