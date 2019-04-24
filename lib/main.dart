@@ -11,6 +11,7 @@ import './screens/dashboard.dart';
 import './screens/login.dart';
 import './screens/form.dart';
 import './screens/statements.dart';
+import './screens/offers.dart';
 
 void main() {
   final auth = AuthModel();
@@ -60,13 +61,14 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Montserrat',
           primarySwatch: Colors.deepPurple,
         ),
-        initialRoute: '/',
+        initialRoute: '/offers',
         routes: {
           '/': (context) => Login(),
           '/simulation': (context) => SimulationPage(),
           '/dashboard': (context) => Dashboard(),
           '/form': (context) => FormPage(),
-          '/statements': (context) => StatementsPage()
+          '/statements': (context) => StatementsPage(),
+          '/offers': (context) => OffersPage()
         },
       ),
     );

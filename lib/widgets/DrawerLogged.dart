@@ -86,8 +86,7 @@ class LoggedDrawer extends StatelessWidget {
                       Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Offers',style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
-                    // Update the state of the app
-                    // ...
+                    Navigator.pushReplacementNamed(context, '/offers');
                   },
                 ),
                 ListTile(

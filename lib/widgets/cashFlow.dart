@@ -18,7 +18,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
   Map<DateTime, List> _visibleEvents;
   List _selectedEvents;
   AnimationController _controller;
-  Future _test;
+  List _flows;
 
 
   
@@ -26,7 +26,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _test = loadCashFlow();
+    loadCashFlow() ;
     _selectedDay = DateTime.now();
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
@@ -151,8 +151,8 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     return TableCalendar(
       locale: DemoLocalizations.of(context).locale.countryCode,
       events: _visibleEvents,
-      initialCalendarFormat: CalendarFormat.week,
-      formatAnimation: FormatAnimation.slide,
+      initialCalendarFormat: CalendarFormat.month,
+      formatAnimation: FormatAnimation.scale,
       startingDayOfWeek: StartingDayOfWeek.monday,
       availableGestures: AvailableGestures.all,
       availableCalendarFormats: const {
