@@ -11,6 +11,7 @@ import './screens/dashboard.dart';
 import './screens/login.dart';
 import './screens/form.dart';
 import './screens/statements.dart';
+import './screens/request.dart';
 
 void main() {
   final auth = AuthModel();
@@ -66,7 +67,8 @@ class MyApp extends StatelessWidget {
           '/simulation': (context) => SimulationPage(),
           '/dashboard': (context) => Dashboard(),
           '/form': (context) => FormPage(),
-          '/statements': (context) => StatementsPage()
+          '/statements': (context) => StatementsPage(),
+          '/request':(context) => RequestPage()
         },
       ),
     );
