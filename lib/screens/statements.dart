@@ -138,23 +138,68 @@ class StatementsPageState extends State<StatementsPage> {
                       setState(() {
                         account = newValue;
                       });
-                      if (newValue == '1804040014') {
-                        setState(() {
-                          availableAmt = 4286.00;
-                          totalOutstanding = 5500.00;
-                          deductions = 1100.00;
-                          fiu = 114.00;
-                          contractNumber = 'GB13404';
-                          type = 'Classical';
-                          currency = 'EUR';
-                          client = 'Doogo shoes LTD';
-                          supplier = 'FACTORIX';
-                        });
+
+                      switch (newValue) {
+                        case '1804040014':
+                          setState(() {
+                            availableAmt = 4286.00;
+                            totalOutstanding = 5500.00;
+                            deductions = 1100.00;
+                            fiu = 114.00;
+                            contractNumber = 'GB13404';
+                            type = 'Classical';
+                            currency = 'EUR';
+                            client = 'Doogo shoes LTD';
+                            supplier = 'FACTORIX';
+                          });
+                          break;
+                          case '1804040013':
+                          setState(() {
+                            availableAmt = 8144.00;
+                            totalOutstanding = 2345.00;
+                            deductions = 220.00;
+                            fiu = 199.00;
+                            contractNumber = 'GB13645';
+                            type = 'Classical';
+                            currency = 'EUR';
+                            client = 'Flip Flop Limited';
+                            supplier = 'ASSURIX';
+                          });
+                          break;
+                        case '1804050003':
+                          setState(() {
+                            availableAmt = 1244.00;
+                            totalOutstanding = 122.12;
+                            deductions = 13.00;
+                            fiu = 223.00;
+                            contractNumber = 'GB12129';
+                            type = 'Classical';
+                            currency = 'EUR';
+                            client = 'Flip Flop Limited';
+                            supplier = 'ASSURIX';
+                          });
                       }
+
+
+
+//                      if (newValue == '1804040014') {
+//                        setState(() {
+//                          availableAmt = 4286.00;
+//                          totalOutstanding = 5500.00;
+//                          deductions = 1100.00;
+//                          fiu = 114.00;
+//                          contractNumber = 'GB13404';
+//                          type = 'Classical';
+//                          currency = 'EUR';
+//                          client = 'Doogo shoes LTD';
+//                          supplier = 'FACTORIX';
+//                        });
+//                      }
                     },
                     items: <String>[
                       '1804040013',
                       '1804040014',
+                      '1804050003',
                     ].map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
