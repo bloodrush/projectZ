@@ -11,7 +11,7 @@ class _SimulationPageState extends State<SimulationPage> {
   String baremeValue = 'MONTHLY';
   String performanceValue = '';
   String insuranceValue = '';
-  double amountMin = 10000.0;
+  double amountMin = 6000.0;
   double amountMax = 25000.0;
   double amountValue = 12000.0;
   double installmentMin = 50.0;

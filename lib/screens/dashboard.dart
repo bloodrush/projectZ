@@ -15,7 +15,7 @@ class _Dashboard extends State<Dashboard> {
   final _widgetOptions = [
     SimulationPage(),
     CashFlow(),
-    Text('Index 2: School'),
+    Text('Index 2: this is fdad dsfdstest'),
   ];
 
   void _onItemTapped(int index) {
