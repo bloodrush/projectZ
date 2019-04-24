@@ -20,6 +20,7 @@ class _StatementsPageState extends State<StatementsPage> {
 
 
 
+
   @override
   Widget build(BuildContext context) {
 
@@ -42,85 +43,91 @@ class _StatementsPageState extends State<StatementsPage> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
-            margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                // Add one stop for each color. Stops should increase from 0 to 1
-                stops: [0.1, 0.8],
-                colors: [
-                  // Colors are easy thanks to Flutter's Colors class.
-                  Color.fromRGBO(101, 121, 155, 1),
-                  Color.fromRGBO(94, 37, 99, 1)
+          Hero(
+
+            tag: 'myHero',
+            child:
+            Container(
+              padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
+              margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight: Radius.circular(10.0)),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  // Add one stop for each color. Stops should increase from 0 to 1
+                  stops: [0.1, 0.8],
+                  colors: [
+                    // Colors are easy thanks to Flutter's Colors class.
+                    Color.fromRGBO(101, 121, 155, 1),
+                    Color.fromRGBO(94, 37, 99, 1)
+                  ],
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'AGGREGATED ACCOUNTS SUMMARY',
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w600),
+                  ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text('15 264.45',
+                      style: TextStyle(color: Colors.white, fontSize: 36.0)),
+                  Text('Real availability',
+                      style: TextStyle(color: Colors.white, fontSize: 18.0)),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Divider(
+                      color: Colors.white,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Text('371 970.00',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
+                          Text('Total outstanding',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 12.0)),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text('61 365.93',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
+                          Text('Deductions',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 12.0)),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text('295 339.67',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
+                          Text('Funds in use',
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 12.0)),
+                        ],
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'AGGREGATED ACCOUNTS SUMMARY',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(
-                    color: Colors.white,
-                  ),
-                ),
-                Text('15 264.45',
-                    style: TextStyle(color: Colors.white, fontSize: 36.0)),
-                Text('Real availability',
-                    style: TextStyle(color: Colors.white, fontSize: 18.0)),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Divider(
-                    color: Colors.white,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        Text('371 970.00',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18.0)),
-                        Text('Total outstanding',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12.0)),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text('61 365.93',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18.0)),
-                        Text('Deductions',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12.0)),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text('295 339.67',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 18.0)),
-                        Text('Funds in use',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12.0)),
-                      ],
-                    ),
-                  ],
-                )
-              ],
-            ),
           ),
+
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Divider(
@@ -180,21 +187,6 @@ class _StatementsPageState extends State<StatementsPage> {
                           });
                       }
 
-
-
-//                      if (newValue == '1804040014') {
-//                        setState(() {
-//                          availableAmt = 4286.00;
-//                          totalOutstanding = 5500.00;
-//                          deductions = 1100.00;
-//                          fiu = 114.00;
-//                          contractNumber = 'GB13404';
-//                          type = 'Classical';
-//                          currency = 'EUR';
-//                          client = 'Doogo shoes LTD';
-//                          supplier = 'FACTORIX';
-//                        });
-//                      }
                     },
                     items: <String>[
                       '1804040013',
@@ -380,7 +372,9 @@ class _StatementsPageState extends State<StatementsPage> {
             child: RaisedButton(
                 child: Text('REQUEST FUNDING', style: TextStyle(color: Colors.white),),
                 color: Color.fromRGBO(94, 37, 99, 1),
-                onPressed: null),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/request');
+                }),
           ),
         ],
       ),
