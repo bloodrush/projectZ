@@ -29,19 +29,23 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _selectedDay = DateTime.now();
-    _loadCashFlow();
-    _flows.forEach((f) {
-      _events[_selectedDay.add(Duration(days: f.offset))] = f.flows;
-    });
-    _selectedEvents = _events[_selectedDay] ?? [];
-    _visibleEvents = _events;
+    _setData();
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
 
     _controller.forward();
+  }
+
+  void _setData() async {
+    _selectedDay = DateTime.now();
+    await _loadCashFlow();
+    _flows.forEach((f) {
+      _events[_selectedDay.add(Duration(days: f.offset))] = f.flows;
+    });
+    _selectedEvents = _events[_selectedDay] ?? [];
+    _visibleEvents = _events;
   }
 
   void _onDaySelected(DateTime day, List events) {

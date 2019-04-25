@@ -13,5 +13,15 @@
 				"price": 30
 			}
 		]
+	},
+	{
+		"offset": 2,
+		"flows": [
+			{
+				"date": "2019-04-22T16:56:20.725Z",
+				"purch": "tigani ot bilata",
+				"price": 30
+			}
+		]
 	}
 ]
