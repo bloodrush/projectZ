@@ -1,7 +1,17 @@
 [
 	{
-		"date": "2019-04-22T16:56:20.725Z",
-		"purch": "tigani ot bilata",
-		"price": 30
+		"offset": 1,
+		"flows": [
+			{
+				"date": "2019-04-22T16:56:20.725Z",
+				"purch": "tigani ot bilata",
+				"price": 30
+			},
+			{
+				"date": "2019-04-24T16:56:20.725Z",
+				"purch": "suzdurma ot Kaufland",
+				"price": 30
+			}
+		]
 	}
 ]

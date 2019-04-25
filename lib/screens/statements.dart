@@ -3,10 +3,10 @@ import '../widgets/DrawerLogged.dart';
 
 class StatementsPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => StatementsPageState();
+  State<StatefulWidget> createState() => _StatementsPageState();
 }
 
-class StatementsPageState extends State<StatementsPage> {
+class _StatementsPageState extends State<StatementsPage> {
   String account = '1804040013';
   double availableAmt = 8144.00;
   double totalOutstanding = 2345.00;
