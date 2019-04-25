@@ -4,10 +4,12 @@ import "dart:async" show Future;
 import "package:flutter/services.dart" show rootBundle;
 import "dart:convert";
 
+import 'package:table_calendar/table_calendar.dart';
 import "../models/cashFlows.dart";
 
-import 'package:table_calendar/table_calendar.dart';
 import '../context/localization.dart';
+
+import '../widgets/Flow.dart';
 
 class CashFlow extends StatefulWidget {
   final String test;
@@ -108,7 +110,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
                 //-----------------------
                 _buildTableCalendar(),
                 const SizedBox(height: 8.0),
-                Expanded(child: _buildEventList()),
+                Expanded(child: Event(selectedEvents: _selectedEvents)),
               ],
             );
           }
@@ -151,39 +153,6 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
       ),
       onDaySelected: _onDaySelected,
       onVisibleDaysChanged: _onVisibleDaysChanged,
-    );
-  }
-
-  Widget _buildEventList() {
-    return ListView(
-      children: _selectedEvents
-          .map((event) => Container(
-                decoration: BoxDecoration(
-                  border: Border.all(width: 0.8),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                margin:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                child: ListTile(
-                  title: Column(
-                    children: <Widget>[
-                      Container(
-                        child: Text(event.purchase.toString()),
-                      ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Text(event.date.toString()),
-                            Text(event.price.toString())
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  onTap: () => print('$event tapped!'),
-                ),
-              ))
-          .toList(),
     );
   }
 }

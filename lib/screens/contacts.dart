@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/DrawerLogged.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

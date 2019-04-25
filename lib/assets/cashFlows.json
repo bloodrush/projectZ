@@ -5,22 +5,36 @@
 			{
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "tigani ot bilata",
+				"loc": "Billata v mahalata",
 				"price": 30
 			},
 			{
 				"date": "2019-04-24T16:56:20.725Z",
 				"purch": "suzdurma ot Kaufland",
+				"loc": "Kauflanda do bitaka",
 				"price": 30
 			}
 		]
 	},
 	{
-		"offset": 2,
+		"offset": 4,
 		"flows": [
 			{
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "tigani ot bilata",
+				"loc": "Billata v mahalata",
 				"price": 30
+			}
+		]
+	},
+	{
+		"offset": 3,
+		"flows": [
+			{
+				"date": "2019-04-22T16:56:20.725Z",
+				"purch": "Sushenicata na bachi Kolio",
+				"loc": "Metro na centara",
+				"price": 60
 			}
 		]
 	}

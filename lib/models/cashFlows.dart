@@ -15,28 +15,30 @@ class CashFlowsList {
 
 class CashFlow {
   final int offset;
-  final List<Flow> flows;
+  final List<FlowModel> flows;
 
   CashFlow({this.offset, this.flows});
 
   factory CashFlow.fromJson(Map<String, dynamic> parsedJson) {
     var list = parsedJson['flows'] as List;
-    List<Flow> flows = list.map((i) => Flow.fromJson(i)).toList();
+    List<FlowModel> flows = list.map((i) => FlowModel.fromJson(i)).toList();
     return CashFlow(offset: parsedJson['offset'], flows: flows);
   }
 }
 
-class Flow {
+class FlowModel {
   final String date;
   final String purchase;
+  final String loc;
   final int price;
 
-  Flow({this.date, this.purchase, this.price});
+  FlowModel({this.date, this.purchase, this.price,this.loc});
 
-  factory Flow.fromJson(Map<String, dynamic> parsedJson) {
-    return Flow(
+  factory FlowModel.fromJson(Map<String, dynamic> parsedJson) {
+    return FlowModel(
         date: parsedJson['date'],
         purchase: parsedJson['purch'],
-        price: parsedJson['price']);
+        price: parsedJson['price'],
+        loc: parsedJson['loc']);
   }
 }
