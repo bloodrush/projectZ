@@ -31,6 +31,9 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     super.initState();
     _selectedDay = DateTime.now();
     _loadCashFlow();
+    _flows.forEach((f) {
+      _events[_selectedDay.add(Duration(days: f.offset))] = f.flows;
+    });
     _selectedEvents = _events[_selectedDay] ?? [];
     _visibleEvents = _events;
     _controller = AnimationController(
@@ -77,10 +80,6 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     CashFlowsList cashFlowsList = CashFlowsList.fromJson(jsonResponse);
 
     _flows = cashFlowsList.cashFlows;
-
-    _flows.forEach((f) {
-      _events[_selectedDay.add(Duration(days: f.offset))] = f.flows;
-    });
 
     return true;
   }
