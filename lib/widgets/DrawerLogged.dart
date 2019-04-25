@@ -122,8 +122,7 @@ class LoggedDrawer extends StatelessWidget {
                       Container( margin: EdgeInsets.only(left:20.0 ), child:Text('Contacts',style: TextStyle(fontSize: 20),))
                     ],),
                   onTap: () {
-                    // Update the state of the app
-                    // ...
+                    Navigator.pushReplacementNamed(context, '/contacts');
                   },
                 ),
                 Container( padding: EdgeInsets.symmetric(horizontal: 20.0),

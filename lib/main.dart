@@ -13,6 +13,7 @@ import './screens/form.dart';
 import './screens/statements.dart';
 import './screens/offers.dart';
 import './screens/request.dart';
+import './screens/contacts.dart';
 
 void main() {
   final auth = AuthModel();
@@ -70,7 +71,9 @@ class MyApp extends StatelessWidget {
           '/form': (context) => FormPage(),
           '/statements': (context) => StatementsPage(),
           '/offers': (context) => OffersPage(),
-          '/request':(context) => RequestPage()
+          '/request':(context) => RequestPage(),
+          '/contacts':(context) => ContactsPage()
+
         },
       ),
     );

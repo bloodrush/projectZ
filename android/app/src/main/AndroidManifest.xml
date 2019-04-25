@@ -24,7 +24,7 @@
                  defined in @style/LaunchTheme). -->
             <meta-data
                 android:name="com.google.andorid.geo.API_KEY"
-                android:value="AIzaSyBLDlghz7Vrf-km-WiCDeGg7omxDLoWl6o" />
+                android:value="AIzaSyBXINImT0dhXdHk-H4N1r0N7sVYpMjwjwI" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
