@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+
+import "dart:async" show Future;
+import "package:flutter/services.dart" show rootBundle;
+import "dart:convert";
+
+import "../models/cashFlows.dart";
+
 import 'package:table_calendar/table_calendar.dart';
 import '../context/localization.dart';
-import '../services/cashFlowsService.dart';
 
 class CashFlow extends StatefulWidget {
   final String test;
@@ -14,88 +20,26 @@ class CashFlow extends StatefulWidget {
 
 class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
   DateTime _selectedDay;
-  Map<DateTime, List> _events;
+  Map<DateTime, List> _events = Map();
   Map<DateTime, List> _visibleEvents;
   List _selectedEvents;
   AnimationController _controller;
   List _flows;
 
-
-  
-
   @override
   void initState() {
     super.initState();
-    loadCashFlow() ;
     _selectedDay = DateTime.now();
-    _events = {
-      _selectedDay.subtract(Duration(days: 30)): [
-        'Event A0',
-        'Event B0',
-        'Event C0'
-      ],
-      _selectedDay.subtract(Duration(days: 27)): ['Event A1'],
-      _selectedDay.subtract(Duration(days: 20)): [
-        'Event A2',
-        'Event B2',
-        'Event C2',
-        'Event D2'
-      ],
-      _selectedDay.subtract(Duration(days: 16)): ['Event A3', 'Event B3'],
-      _selectedDay.subtract(Duration(days: 10)): [
-        'Event A4',
-        'Event B4',
-        'Event C4'
-      ],
-      _selectedDay.subtract(Duration(days: 4)): [
-        'Event A5',
-        'Event B5',
-        'Event C5'
-      ],
-      _selectedDay.subtract(Duration(days: 2)): ['Event A6', 'Event B6'],
-      _selectedDay: ['Event A7', 'Event B7', 'Event C7', 'Event D7'],
-      _selectedDay.add(Duration(days: 1)): [
-        'Event A8',
-        'Event B8',
-        'Event C8',
-        'Event D8'
-      ],
-      _selectedDay.add(Duration(days: 3)):
-          Set.from(['Event A9', 'Event A9', 'Event B9']).toList(),
-      _selectedDay.add(Duration(days: 7)): [
-        'Event A10',
-        'Event B10',
-        'Event C10'
-      ],
-      _selectedDay.add(Duration(days: 11)): ['Event A11', 'Event B11'],
-      _selectedDay.add(Duration(days: 17)): [
-        'Event A12',
-        'Event B12',
-        'Event C12',
-        'Event D12'
-      ],
-      _selectedDay.add(Duration(days: 22)): ['Event A13', 'Event B13'],
-      _selectedDay.add(Duration(days: 26)): [
-        'Event A14',
-        'Event B14',
-        'Event C14'
-      ],
-    };
+    _loadCashFlow();
     _selectedEvents = _events[_selectedDay] ?? [];
     _visibleEvents = _events;
-
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
 
     _controller.forward();
-    print(_test);
-    // loadCashFlow().then((res) => {
-    //   print(res)
-    // });
   }
-
 
   void _onDaySelected(DateTime day, List events) {
     setState(() {
@@ -123,6 +67,24 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     print('Current format: $format');
   }
 
+  Future<String> _loadCashFlowAsset() async {
+    return await rootBundle.loadString('lib/assets/cashFlows.json');
+  }
+
+  Future _loadCashFlow() async {
+    String jsonPhotos = await _loadCashFlowAsset();
+    final jsonResponse = json.decode(jsonPhotos);
+    CashFlowsList cashFlowsList = CashFlowsList.fromJson(jsonResponse);
+
+    _flows = cashFlowsList.cashFlows;
+
+    _flows.forEach((f) {
+      _events[_selectedDay.add(Duration(days: f.offset))] = f.flows;
+    });
+
+    return true;
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -131,15 +93,26 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        // Switch out 2 lines below to play with TableCalendar's settings
-        //-----------------------
-        _buildTableCalendar(),
-        const SizedBox(height: 8.0),
-        Expanded(child: _buildEventList()),
-      ],
+    return FutureBuilder(
+      future: _loadCashFlow(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                // Switch out 2 lines below to play with TableCalendar's settings
+                //-----------------------
+                _buildTableCalendar(),
+                const SizedBox(height: 8.0),
+                Expanded(child: _buildEventList()),
+              ],
+            );
+          }
+        } else {
+          return Container(child: Text("Loading"));
+        }
+      },
     );
 
     // TableCalendar(
@@ -189,7 +162,21 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
                 child: ListTile(
-                  title: Text(event.toString()),
+                  title: Column(
+                    children: <Widget>[
+                      Container(
+                        child: Text(event.purchase.toString()),
+                      ),
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Text(event.date.toString()),
+                            Text(event.price.toString())
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                   onTap: () => print('$event tapped!'),
                 ),
               ))
