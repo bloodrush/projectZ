@@ -11,6 +11,11 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="project_z"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.andorid.geo.API_KEY"
+            android:value="AIzaSyBXINImT0dhXdHk-H4N1r0N7sVYpMjwjwI" />
+        <meta-data android:name="com.google.android.gms.version"
+      android:value="@integer/google_play_services_version" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -23,8 +28,8 @@
                  there is no splash screen (such as the default splash screen
                  defined in @style/LaunchTheme). -->
             <meta-data
-                android:name="com.google.andorid.geo.API_KEY"
-                android:value="AIzaSyBXINImT0dhXdHk-H4N1r0N7sVYpMjwjwI" />
+                android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
+                android:value="true" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
