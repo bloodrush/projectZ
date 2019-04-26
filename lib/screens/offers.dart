@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/DrawerLogged.dart';
 
-import '../widgets/cashFlow.dart';
-
 class OffersPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _OffersState();
@@ -19,6 +17,6 @@ class _OffersState extends State<OffersPage> {
               child: Text('OFFERS'),
             )),
         drawer: LoggedDrawer(),
-        body: CashFlow());
+        body: Center(child: Text('hello from Offers page')));
   }
 }

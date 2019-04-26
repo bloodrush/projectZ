@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import "dart:async" show Future;
 import "package:flutter/services.dart" show rootBundle;
 import "dart:convert";
-
 import 'package:table_calendar/table_calendar.dart';
 import "../models/cashFlows.dart";
 
@@ -92,8 +91,9 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
+    _controller.dispose();
+
   }
 
   @override
@@ -109,7 +109,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
                 // Switch out 2 lines below to play with TableCalendar's settings
                 //-----------------------
                 _buildTableCalendar(),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 20.0),
                 Expanded(child: Event(selectedEvents: _selectedEvents)),
               ],
             );
@@ -134,21 +134,65 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
       startingDayOfWeek: StartingDayOfWeek.monday,
       availableGestures: AvailableGestures.all,
       availableCalendarFormats: const {
-        CalendarFormat.month: 'Month',
-        CalendarFormat.twoWeeks: '2 weeks',
-        CalendarFormat.week: 'Week',
+        CalendarFormat.month: 'Full',
+        CalendarFormat.twoWeeks: 'Compact'
       },
+      builders: CalendarBuilders(
+        markersBuilder: (context, date, events) {
+          return Positioned(
+            right: 1,
+            bottom: 1,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 400),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.deepOrange[300],
+//                color: Utils.isSameDay(date, _selectedDay)
+//                    ? Colors.brown[400]
+//                    : Utils.isSameDay(date, DateTime.now()) ? Colors.brown[300] : Colors.deepPurple[400],
+              ),
+              width: 16.0,
+              height: 16.0,
+              child: Center(
+                child: Text(
+                  '${events.length}',
+                  style: TextStyle().copyWith(
+                    color: Colors.white,
+                    fontSize: 13.0,
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: Colors.deepPurple[600],
+        todayColor: Colors.deepPurple[200],
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
             TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              offset: new Offset(1.0, 1.0),
+              blurRadius: 1.0,
+            )
+          ],
           borderRadius: BorderRadius.circular(16.0),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            // Add one stop for each color. Stops should increase from 0 to 1
+            stops: [0.1, 0.8],
+            colors: [
+              // Colors are easy thanks to Flutter's Colors class.
+              Color.fromRGBO(101, 121, 155, 1),
+              Color.fromRGBO(94, 37, 99, 1)
+            ],
+          ),
         ),
       ),
       onDaySelected: _onDaySelected,
