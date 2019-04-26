@@ -26,15 +26,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  var routes = {
+    '/': (context) => Login(),
+    '/simulation': (context) => SimulationPage(),
+    '/dashboard': (context) => Dashboard(),
+    '/form': (context) => FormPage(),
+    '/statements': (context) => StatementsPage(),
+    '/offers': (context) => OffersPage(),
+    '/request': (context) => RequestPage(),
+    '/contacts': (context) => ContactsPage()
+  };
+
   @override
   Widget build(BuildContext context) {
     final HttpLink httpLink = HttpLink(
       uri: 'https://locamz-lvjupvjtsk.now.sh/graphql',
     );
-
-
-
-
 
     ValueNotifier<GraphQLClient> client = ValueNotifier(
       GraphQLClient(
@@ -64,17 +71,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.deepPurple,
         ),
         initialRoute: '/offers',
-        routes: {
-          '/': (context) => Login(),
-          '/simulation': (context) => SimulationPage(),
-          '/dashboard': (context) => Dashboard(),
-          '/form': (context) => FormPage(),
-          '/statements': (context) => StatementsPage(),
-          '/offers': (context) => OffersPage(),
-          '/request':(context) => RequestPage(),
-          '/contacts':(context) => ContactsPage()
-
-        },
+        routes: routes,
       ),
     );
   }
