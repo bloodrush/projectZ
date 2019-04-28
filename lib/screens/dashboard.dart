@@ -4,6 +4,7 @@ import 'package:outline_material_icons/outline_material_icons.dart';
 import 'simulation.dart';
 
 import '../widgets/cashFlow.dart';
+import 'charts.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class _Dashboard extends State<Dashboard> {
   final _widgetOptions = [
     SimulationPage(),
     CashFlow(),
-    Text('Index 2: this is fdad dsfdstest'),
+    AnimatedPieChartExample(),
   ];
 
   void _onItemTapped(int index) {

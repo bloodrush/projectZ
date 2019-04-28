@@ -1,5 +1,16 @@
 [
 	{
+		"offset": 0,
+		"flows": [
+			{
+				"date": "2019-04-22T16:56:20.725Z",
+				"purch": "Tigani ot bilata",
+				"loc": "Billata v mahalata",
+				"price": 30
+			}
+		]
+	},
+	{
 		"offset": 1,
 		"flows": [
 			{
