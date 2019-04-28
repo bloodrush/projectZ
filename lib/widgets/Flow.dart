@@ -5,10 +5,9 @@ class Event extends StatelessWidget {
 
   const Event({Key key, this.selectedEvents}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: selectedEvents
+  List<Widget> _listEvents(BuildContext context) {
+    if (selectedEvents.length > 0) {
+      return selectedEvents
           .map((event) => Container(
                 decoration: BoxDecoration(
                     color: Colors.purple,
@@ -77,7 +76,23 @@ class Event extends StatelessWidget {
                   onTap: () => print('$event tapped!'),
                 ),
               ))
-          .toList(),
-    );
+          .toList();
+    } else {
+      return [
+        Container(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50.0),
+            child: Center(
+              child: Text('There are no flows on this day'),
+            ),
+          ),
+        )
+      ];
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(children: _listEvents(context));
   }
 }
