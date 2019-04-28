@@ -93,7 +93,6 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
   void dispose() {
     super.dispose();
     _controller.dispose();
-
   }
 
   @override
