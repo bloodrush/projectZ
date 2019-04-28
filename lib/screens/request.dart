@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
 import '../widgets/DrawerLogged.dart';
-import 'dart:math' as math;
 
 class RequestPage extends StatefulWidget {
+  final String account;
+  final double availableAmt;
+  final double totalOutstanding;
+  final double deductions;
+  final double fiu;
+  final String contractNumber;
+  final String type;
+  final String currency;
+  final String client;
+  final String supplier;
+
+  RequestPage(
+      {this.account,
+      this.availableAmt,
+      this.client,
+      this.contractNumber,
+      this.currency,
+      this.deductions,
+      this.fiu,
+      this.supplier,
+      this.totalOutstanding,
+      this.type});
+
   @override
   State<StatefulWidget> createState() => RequestPageState();
 }
@@ -10,8 +32,6 @@ class RequestPage extends StatefulWidget {
 class RequestPageState extends State<RequestPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  Animation<double> _animation;
-
   @override
   void initState() {
     super.initState();

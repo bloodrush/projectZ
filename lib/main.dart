@@ -26,7 +26,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  var routes = {
+  final routes = {
     '/': (context) => Login(),
     '/simulation': (context) => SimulationPage(),
     '/dashboard': (context) => Dashboard(),

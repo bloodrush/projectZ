@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/DrawerLogged.dart';
+import './request.dart';
 
 class StatementsPage extends StatefulWidget {
   @override
@@ -7,16 +8,16 @@ class StatementsPage extends StatefulWidget {
 }
 
 class _StatementsPageState extends State<StatementsPage> {
-  String account = '1804040013';
-  double availableAmt = 8144.00;
-  double totalOutstanding = 2345.00;
-  double deductions = 220.00;
-  double fiu = 199.00;
-  String contractNumber = 'GB13645';
-  String type = 'Classical';
-  String currency = 'EUR';
-  String client = 'Flip Flop Limited';
-  String supplier = 'ASSURIX';
+  String _account = '1804040013';
+  double _availableAmt = 8144.00;
+  double _totalOutstanding = 2345.00;
+  double _deductions = 220.00;
+  double _fiu = 199.00;
+  String _contractNumber = 'GB13645';
+  String _type = 'Classical';
+  String _currency = 'EUR';
+  String _client = 'Flip Flop Limited';
+  String _supplier = 'ASSURIX';
 
   @override
   Widget build(BuildContext context) {
@@ -132,50 +133,50 @@ class _StatementsPageState extends State<StatementsPage> {
               Text('Select account'),
               Container(
                   child: DropdownButton<String>(
-                value: account,
+                value: _account,
                 onChanged: (String newValue) {
                   setState(() {
-                    account = newValue;
+                    _account = newValue;
                   });
 
                   switch (newValue) {
                     case '1804040014':
                       setState(() {
-                        availableAmt = 4286.00;
-                        totalOutstanding = 5500.00;
-                        deductions = 1100.00;
-                        fiu = 114.00;
-                        contractNumber = 'GB13404';
-                        type = 'Classical';
-                        currency = 'EUR';
-                        client = 'Doogo shoes LTD';
-                        supplier = 'FACTORIX';
+                        _availableAmt = 4286.00;
+                        _totalOutstanding = 5500.00;
+                        _deductions = 1100.00;
+                        _fiu = 114.00;
+                        _contractNumber = 'GB13404';
+                        _type = 'Classical';
+                        _currency = 'EUR';
+                        _client = 'Doogo shoes LTD';
+                        _supplier = 'FACTORIX';
                       });
                       break;
                     case '1804040013':
                       setState(() {
-                        availableAmt = 8144.00;
-                        totalOutstanding = 2345.00;
-                        deductions = 220.00;
-                        fiu = 199.00;
-                        contractNumber = 'GB13645';
-                        type = 'Classical';
-                        currency = 'EUR';
-                        client = 'Flip Flop Limited';
-                        supplier = 'ASSURIX';
+                        _availableAmt = 8144.00;
+                        _totalOutstanding = 2345.00;
+                        _deductions = 220.00;
+                        _fiu = 199.00;
+                        _contractNumber = 'GB13645';
+                        _type = 'Classical';
+                        _currency = 'EUR';
+                        _client = 'Flip Flop Limited';
+                        _supplier = 'ASSURIX';
                       });
                       break;
                     case '1804050003':
                       setState(() {
-                        availableAmt = 1244.00;
-                        totalOutstanding = 122.12;
-                        deductions = 13.00;
-                        fiu = 223.00;
-                        contractNumber = 'GB12129';
-                        type = 'Classical';
-                        currency = 'EUR';
-                        client = 'Flip Flop Limited';
-                        supplier = 'ASSURIX';
+                        _availableAmt = 1244.00;
+                        _totalOutstanding = 122.12;
+                        _deductions = 13.00;
+                        _fiu = 223.00;
+                        _contractNumber = 'GB12129';
+                        _type = 'Classical';
+                        _currency = 'EUR';
+                        _client = 'Flip Flop Limited';
+                        _supplier = 'ASSURIX';
                       });
                   }
                 },
@@ -216,7 +217,7 @@ class _StatementsPageState extends State<StatementsPage> {
                     ),
                   ),
                 ),
-                Text(availableAmt.toString(),
+                Text(_availableAmt.toString(),
                     style: TextStyle(
                         color: Color.fromRGBO(94, 37, 99, 1), fontSize: 36.0)),
                 Text('Available amount',
@@ -235,7 +236,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(totalOutstanding.toString(),
+                          Text(_totalOutstanding.toString(),
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -250,7 +251,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(deductions.toString(),
+                          Text(_deductions.toString(),
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -265,7 +266,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(fiu.toString(),
+                          Text(_fiu.toString(),
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -288,7 +289,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(contractNumber,
+                          Text(_contractNumber,
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -303,7 +304,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(type,
+                          Text(_type,
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -318,7 +319,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(currency,
+                          Text(_currency,
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -341,7 +342,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(client,
+                          Text(_client,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
@@ -357,7 +358,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(supplier,
+                          Text(_supplier,
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -381,8 +382,25 @@ class _StatementsPageState extends State<StatementsPage> {
                   style: TextStyle(color: Colors.white),
                 ),
                 color: Color.fromRGBO(94, 37, 99, 1),
+                splashColor: Colors.white,
                 onPressed: () {
-                  Navigator.pushNamed(context, '/request');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RequestPage(
+                            account: _account,
+                            availableAmt: _availableAmt,
+                            client: _client,
+                            contractNumber: _contractNumber,
+                            currency: _currency,
+                            deductions: _deductions,
+                            fiu: _fiu,
+                            supplier: _supplier,
+                            totalOutstanding: _totalOutstanding,
+                            type: _type,
+                          ),
+                    ),
+                  );
                 }),
           ),
         ],
