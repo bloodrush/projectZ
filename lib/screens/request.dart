@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/DrawerLogged.dart';
+import 'dart:async';
+
+import 'statements.dart';
 
 class RequestPage extends StatefulWidget {
   final String account;
@@ -45,7 +48,17 @@ class RequestPageState extends State<RequestPage>
   @override
   void dispose() {
     super.dispose();
+
     _controller.dispose();
+  }
+
+  void backToStatements() {
+    _controller.reverse().then((f) => {
+          Timer(new Duration(milliseconds: 80), () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => StatementsPage()));
+          })
+        });
   }
 
   @override
@@ -68,12 +81,17 @@ class RequestPageState extends State<RequestPage>
         ),
       ),
       body: AnimatedBuilder(
-        builder: (context, child) => Column(
+        builder: (context, child) => ListView(
               children: <Widget>[
-                new Summary(controller: _controller),
+                Summary(controller: _controller),
+                Middle(controller: _controller),
+                Bottom(controller: _controller)
               ],
             ),
         animation: _controller,
+      ),
+      floatingActionButton: CustomButton(
+        onTab: backToStatements,
       ),
     );
   }
@@ -85,21 +103,21 @@ class Summary extends StatelessWidget {
   final Animation zoom;
 
   Summary({Key key, this.controller})
-      : opacity = Tween<double>(begin: 0.5, end: 1).animate(
+      : opacity = Tween<double>(begin: 0.0, end: 1).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.000,
+              0.05,
               0.500,
               curve: Curves.linear,
             ),
           ),
         ),
-        zoom = Tween<double>(begin: 0.4, end: 1).animate(
+        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.0,
+              0.05,
               0.500,
               curve: Curves.elasticOut,
             ),
@@ -114,7 +132,7 @@ class Summary extends StatelessWidget {
         opacity: opacity.value,
         child: Container(
           padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 405.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10.0),
@@ -154,6 +172,190 @@ class Summary extends StatelessWidget {
         ),
       ),
       scale: zoom.value,
+    );
+  }
+}
+
+class Middle extends StatelessWidget {
+  final AnimationController controller;
+  final Animation opacity;
+  final Animation zoom;
+
+  Middle({Key key, this.controller})
+      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.150,
+              0.650,
+              curve: Curves.linear,
+            ),
+          ),
+        ),
+        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.150,
+              0.650,
+              curve: Curves.elasticOut,
+            ),
+          ),
+        ),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.scale(
+      child: Opacity(
+        opacity: opacity.value,
+        child: InkWell(
+          onTap: () {
+            print('tab');
+            controller.reverse();
+          },
+          child: Container(
+            height: 100,
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
+            margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10.0),
+                  bottomRight: Radius.circular(10.0)),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                // Add one stop for each color. Stops should increase from 0 to 1
+                stops: [0.1, 0.8],
+                colors: [
+                  // Colors are easy thanks to Flutter's Colors class.
+                  Color.fromRGBO(101, 121, 155, 1),
+                  Color.fromRGBO(94, 37, 99, 1)
+                ],
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Middle Container',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      scale: zoom.value,
+    );
+  }
+}
+
+class Bottom extends StatelessWidget {
+  final AnimationController controller;
+  final Animation opacity;
+  final Animation zoom;
+
+  Bottom({Key key, this.controller})
+      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.250,
+              0.850,
+              curve: Curves.linear,
+            ),
+          ),
+        ),
+        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.250,
+              0.850,
+              curve: Curves.elasticOut,
+            ),
+          ),
+        ),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.scale(
+      child: Opacity(
+        opacity: opacity.value,
+        child: Container(
+          height: 100,
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.0),
+                bottomRight: Radius.circular(10.0)),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              // Add one stop for each color. Stops should increase from 0 to 1
+              stops: [0.1, 0.8],
+              colors: [
+                // Colors are easy thanks to Flutter's Colors class.
+                Color.fromRGBO(101, 121, 155, 1),
+                Color.fromRGBO(94, 37, 99, 1)
+              ],
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Bottom Container',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+        ),
+      ),
+      scale: zoom.value,
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final GestureTapCallback onTab;
+
+  const CustomButton({Key key, this.onTab}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return RawMaterialButton(
+      fillColor: Colors.grey[400],
+      splashColor: Colors.deepPurple[200],
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            Text('Back',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
+          ],
+        ),
+      ),
+      onPressed: () {
+        onTab();
+      },
     );
   }
 }

@@ -384,7 +384,7 @@ class _StatementsPageState extends State<StatementsPage> {
                 color: Color.fromRGBO(94, 37, 99, 1),
                 splashColor: Colors.white,
                 onPressed: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => RequestPage(
