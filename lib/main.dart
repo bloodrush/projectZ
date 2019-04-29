@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Montserrat',
           primarySwatch: Colors.deepPurple,
         ),
-        initialRoute: '/offers',
+        initialRoute: '/',
         routes: routes,
       ),
     );

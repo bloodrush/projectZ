@@ -12,9 +12,8 @@
         android:label="project_z"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.andorid.geo.API_KEY"
-            android:value="AIzaSyBXINImT0dhXdHk-H4N1r0N7sVYpMjwjwI" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC7bbtdbIa5494sKnpa_m-Kq0Zcm6b3oQs"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
