@@ -41,7 +41,7 @@ class ContactsPageState extends State<ContactsPage> {
       ),
       drawer: LoggedDrawer(),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: _onMapCreated
       ),

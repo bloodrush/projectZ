@@ -35,6 +35,7 @@ class RequestPage extends StatefulWidget {
 class RequestPageState extends State<RequestPage>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
+
   @override
   void initState() {
     super.initState();
@@ -83,9 +84,19 @@ class RequestPageState extends State<RequestPage>
       body: AnimatedBuilder(
         builder: (context, child) => ListView(
               children: <Widget>[
-                Summary(controller: _controller),
-                Middle(controller: _controller),
-                Bottom(controller: _controller)
+                Summary(
+                    controller: _controller,
+                    availableAmt: widget.availableAmt,
+                    totalOutstanding: widget.totalOutstanding,
+                    deductions: widget.deductions,
+                    fiu: widget.fiu,
+                    account: widget.account),
+                Middle(
+                  controller: _controller,
+                  amountMax: widget.availableAmt,
+                  amountValue: widget.availableAmt / 2,
+                ),
+//                Bottom(controller: _controller)
               ],
             ),
         animation: _controller,
@@ -102,7 +113,20 @@ class Summary extends StatelessWidget {
   final Animation opacity;
   final Animation zoom;
 
-  Summary({Key key, this.controller})
+  final double availableAmt;
+  final double totalOutstanding;
+  final double deductions;
+  final double fiu;
+  final String account;
+
+  Summary(
+      {Key key,
+      this.controller,
+      this.availableAmt,
+      this.totalOutstanding,
+      this.deductions,
+      this.fiu,
+      this.account})
       : opacity = Tween<double>(begin: 0.0, end: 1).animate(
           CurvedAnimation(
             parent: controller,
@@ -132,7 +156,7 @@ class Summary extends StatelessWidget {
         opacity: opacity.value,
         child: Container(
           padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10.0),
@@ -153,20 +177,63 @@ class Summary extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'AGGREGATED ACCOUNTS SUMMARY',
+                'ACCOUNT SUMMARY',
                 style:
                     TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
               ),
+              Text(account,
+                  style: TextStyle(color: Colors.white, fontSize: 18.0)),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
                 child: Divider(
                   color: Colors.white,
                 ),
               ),
-              Text('15 264.45',
+              Text(availableAmt.toString(),
                   style: TextStyle(color: Colors.white, fontSize: 36.0)),
               Text('Real availability',
                   style: TextStyle(color: Colors.white, fontSize: 18.0)),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Divider(
+                  color: Colors.white,
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(totalOutstanding.toString(),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
+                      Text('Total outstanding',
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 12.0)),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(deductions.toString(),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
+                      Text('Deductions',
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 12.0)),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text(fiu.toString(),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.0)),
+                      Text('Funds in use',
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 12.0)),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -176,12 +243,15 @@ class Summary extends StatelessWidget {
   }
 }
 
-class Middle extends StatelessWidget {
+class Middle extends StatefulWidget {
+  final double amountValue;
+  final double amountMax;
+
   final AnimationController controller;
   final Animation opacity;
   final Animation zoom;
 
-  Middle({Key key, this.controller})
+  Middle({Key key, this.controller, this.amountMax, this.amountValue})
       : opacity = Tween<double>(begin: 0.3, end: 1).animate(
           CurvedAnimation(
             parent: controller,
@@ -205,124 +275,179 @@ class Middle extends StatelessWidget {
         super(key: key);
 
   @override
+  State<StatefulWidget> createState() => MiddleState();
+}
+
+class MiddleState extends State<Middle> {
+  double sliderValue = 1000;
+
+  @override
   Widget build(BuildContext context) {
     return Transform.scale(
       child: Opacity(
-        opacity: opacity.value,
+        opacity: widget.opacity.value,
         child: InkWell(
           onTap: () {
             print('tab');
-            controller.reverse();
+            widget.controller.reverse();
           },
           child: Container(
-            height: 100,
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
             margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10.0),
-                  bottomRight: Radius.circular(10.0)),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                // Add one stop for each color. Stops should increase from 0 to 1
-                stops: [0.1, 0.8],
-                colors: [
-                  // Colors are easy thanks to Flutter's Colors class.
-                  Color.fromRGBO(101, 121, 155, 1),
-                  Color.fromRGBO(94, 37, 99, 1)
-                ],
-              ),
-            ),
+//            decoration: BoxDecoration(
+//              borderRadius: BorderRadius.only(
+//                  bottomLeft: Radius.circular(10.0),
+//                  bottomRight: Radius.circular(10.0)),
+//              gradient: LinearGradient(
+//                begin: Alignment.topLeft,
+//                end: Alignment.bottomRight,
+//                // Add one stop for each color. Stops should increase from 0 to 1
+//                stops: [0.1, 0.8],
+//                colors: [
+//                  // Colors are easy thanks to Flutter's Colors class.
+//                  Color.fromRGBO(101, 121, 155, 1),
+//                  Color.fromRGBO(94, 37, 99, 1)
+//                ],
+//              ),
+//            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Middle Container',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600),
-                ),
+                Container(
+                    padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 30),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                width: 200.0,
+                                child: TextFormField(
+                                  autocorrect: false,
+                                  initialValue: sliderValue.toString(),
+                                  keyboardType:
+                                      TextInputType.numberWithOptions(),
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(94, 37, 99, 1),
+                                      fontSize: 36.0),
+                                  autofocus: false,
+                                ),
+                              ),
+                              Text(sliderValue.toStringAsFixed(2).toString(),
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(94, 37, 99, 1),
+                                      fontSize: 36.0)),
+                              Text('Available amount',
+                                  style: TextStyle(
+                                      color: Color.fromRGBO(94, 37, 99, 1),
+                                      fontSize: 18.0)),
+                            ],
+                          ),
+                        ),
+                        Slider(
+                          divisions: 15,
+                          activeColor: Color.fromRGBO(94, 37, 99, 1),
+                          label: 'Amount: ' +
+                              widget.amountValue.toStringAsFixed(2),
+                          min: 0,
+                          max: widget.amountMax,
+//                          onChanged: null,
+                          onChanged: (newRating) =>
+                              setState(() => sliderValue = newRating),
+                          value: sliderValue,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text('0.00'),
+                            Text('Amount'),
+                            Text(widget.amountMax.toString())
+                          ],
+                        ),
+                      ],
+                    )),
               ],
             ),
           ),
         ),
       ),
-      scale: zoom.value,
+      scale: widget.zoom.value,
     );
   }
 }
 
-class Bottom extends StatelessWidget {
-  final AnimationController controller;
-  final Animation opacity;
-  final Animation zoom;
-
-  Bottom({Key key, this.controller})
-      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.250,
-              0.850,
-              curve: Curves.linear,
-            ),
-          ),
-        ),
-        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(
-              0.250,
-              0.850,
-              curve: Curves.elasticOut,
-            ),
-          ),
-        ),
-        super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Transform.scale(
-      child: Opacity(
-        opacity: opacity.value,
-        child: Container(
-          height: 100,
-          width: MediaQuery.of(context).size.width,
-          padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10.0),
-                bottomRight: Radius.circular(10.0)),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              // Add one stop for each color. Stops should increase from 0 to 1
-              stops: [0.1, 0.8],
-              colors: [
-                // Colors are easy thanks to Flutter's Colors class.
-                Color.fromRGBO(101, 121, 155, 1),
-                Color.fromRGBO(94, 37, 99, 1)
-              ],
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Bottom Container',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-              ),
-            ],
-          ),
-        ),
-      ),
-      scale: zoom.value,
-    );
-  }
-}
+//class Bottom extends StatelessWidget {
+//  final AnimationController controller;
+//  final Animation opacity;
+//  final Animation zoom;
+//
+//  Bottom({Key key, this.controller})
+//      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
+//          CurvedAnimation(
+//            parent: controller,
+//            curve: Interval(
+//              0.250,
+//              0.850,
+//              curve: Curves.linear,
+//            ),
+//          ),
+//        ),
+//        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
+//          CurvedAnimation(
+//            parent: controller,
+//            curve: Interval(
+//              0.250,
+//              0.850,
+//              curve: Curves.elasticOut,
+//            ),
+//          ),
+//        ),
+//        super(key: key);
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    return Transform.scale(
+//      child: Opacity(
+//        opacity: opacity.value,
+//        child: Container(
+//          height: 100,
+//          width: MediaQuery.of(context).size.width,
+//          padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
+//          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
+//          decoration: BoxDecoration(
+//            borderRadius: BorderRadius.only(
+//                bottomLeft: Radius.circular(10.0),
+//                bottomRight: Radius.circular(10.0)),
+//            gradient: LinearGradient(
+//              begin: Alignment.topLeft,
+//              end: Alignment.bottomRight,
+//              // Add one stop for each color. Stops should increase from 0 to 1
+//              stops: [0.1, 0.8],
+//              colors: [
+//                // Colors are easy thanks to Flutter's Colors class.
+//                Color.fromRGBO(101, 121, 155, 1),
+//                Color.fromRGBO(94, 37, 99, 1)
+//              ],
+//            ),
+//          ),
+//          child: Column(
+//            mainAxisAlignment: MainAxisAlignment.center,
+//            children: <Widget>[
+//              Text(
+//                'Bottom Container',
+//                style:
+//                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+//              ),
+//            ],
+//          ),
+//        ),
+//      ),
+//      scale: zoom.value,
+//    );
+//  }
+//}
 
 class CustomButton extends StatelessWidget {
   final GestureTapCallback onTab;
@@ -332,30 +457,39 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return RawMaterialButton(
-      fillColor: Colors.grey[400],
-      splashColor: Colors.deepPurple[200],
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
-            SizedBox(
-              width: 10.0,
-            ),
-            Text('Back',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
-          ],
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+      RaisedButton(
+        color: Color.fromRGBO(94, 37, 99, 1),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('BACK', style: TextStyle(color: Colors.white))
+            ],
+          ),
         ),
+        onPressed: () {
+          onTab();
+        },
       ),
-      onPressed: () {
-        onTab();
-      },
-    );
+      RaisedButton(
+        color: Color.fromRGBO(94, 37, 99, 1),
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('SUBMIT REQUEST', style: TextStyle(color: Colors.white))
+            ],
+          ),
+        ),
+        onPressed: () {
+          onTab();
+        },
+      )
+    ]);
   }
 }
