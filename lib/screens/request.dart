@@ -325,6 +325,7 @@ class MiddleState extends State<Middle> {
                               Container(
                                 width: 200.0,
                                 child: TextFormField(
+                                  textAlign: TextAlign.center,
                                   autocorrect: false,
                                   initialValue: sliderValue.toString(),
                                   keyboardType:

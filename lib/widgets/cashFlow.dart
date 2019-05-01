@@ -145,7 +145,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
               duration: const Duration(milliseconds: 400),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.deepOrange[300],
+                color: Colors.blueGrey[600],
 //                color: Utils.isSameDay(date, _selectedDay)
 //                    ? Colors.brown[400]
 //                    : Utils.isSameDay(date, DateTime.now()) ? Colors.brown[300] : Colors.deepPurple[400],

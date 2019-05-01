@@ -203,7 +203,7 @@ class _LoginState extends State<Login> {
                   Text(''),
                   Image.asset(
                     'lib/assets/images/logo-locam.png',
-                    height: 30.0,
+                    height: 150.0,
                   ),
                   Text(
                     DemoLocalizations.of(context).locale.languageCode,
