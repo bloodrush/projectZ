@@ -96,7 +96,7 @@ class RequestPageState extends State<RequestPage>
                   amountMax: widget.availableAmt,
                   amountValue: widget.availableAmt / 2,
                 ),
-//                Bottom(controller: _controller)
+                Bottom(controller: _controller)
               ],
             ),
         animation: _controller,
@@ -191,7 +191,7 @@ class Summary extends StatelessWidget {
               ),
               Text(availableAmt.toString(),
                   style: TextStyle(color: Colors.white, fontSize: 36.0)),
-              Text('Real availability',
+              Text('Available amount',
                   style: TextStyle(color: Colors.white, fontSize: 18.0)),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -279,7 +279,8 @@ class Middle extends StatefulWidget {
 }
 
 class MiddleState extends State<Middle> {
-  double sliderValue = 1000;
+  double sliderValue = 1000.00;
+  var myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -295,22 +296,6 @@ class MiddleState extends State<Middle> {
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
             margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
-//            decoration: BoxDecoration(
-//              borderRadius: BorderRadius.only(
-//                  bottomLeft: Radius.circular(10.0),
-//                  bottomRight: Radius.circular(10.0)),
-//              gradient: LinearGradient(
-//                begin: Alignment.topLeft,
-//                end: Alignment.bottomRight,
-//                // Add one stop for each color. Stops should increase from 0 to 1
-//                stops: [0.1, 0.8],
-//                colors: [
-//                  // Colors are easy thanks to Flutter's Colors class.
-//                  Color.fromRGBO(101, 121, 155, 1),
-//                  Color.fromRGBO(94, 37, 99, 1)
-//                ],
-//              ),
-//            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -325,9 +310,10 @@ class MiddleState extends State<Middle> {
                               Container(
                                 width: 200.0,
                                 child: TextFormField(
+                                  controller: myController,
                                   textAlign: TextAlign.center,
                                   autocorrect: false,
-                                  initialValue: sliderValue.toString(),
+//                                  initialValue: '1000',
                                   keyboardType:
                                       TextInputType.numberWithOptions(),
                                   style: TextStyle(
@@ -336,11 +322,7 @@ class MiddleState extends State<Middle> {
                                   autofocus: false,
                                 ),
                               ),
-                              Text(sliderValue.toStringAsFixed(2).toString(),
-                                  style: TextStyle(
-                                      color: Color.fromRGBO(94, 37, 99, 1),
-                                      fontSize: 36.0)),
-                              Text('Available amount',
+                              Text('Funding amount',
                                   style: TextStyle(
                                       color: Color.fromRGBO(94, 37, 99, 1),
                                       fontSize: 18.0)),
@@ -348,15 +330,18 @@ class MiddleState extends State<Middle> {
                           ),
                         ),
                         Slider(
-                          divisions: 15,
+
+                          divisions: 30,
                           activeColor: Color.fromRGBO(94, 37, 99, 1),
                           label: 'Amount: ' +
                               widget.amountValue.toStringAsFixed(2),
                           min: 0,
                           max: widget.amountMax,
 //                          onChanged: null,
-                          onChanged: (newRating) =>
+                          onChanged: (newRating) => {
                               setState(() => sliderValue = newRating),
+                          myController.text = sliderValue.toStringAsFixed(2)
+                        },
                           value: sliderValue,
                         ),
                         Row(
@@ -379,76 +364,85 @@ class MiddleState extends State<Middle> {
   }
 }
 
-//class Bottom extends StatelessWidget {
-//  final AnimationController controller;
-//  final Animation opacity;
-//  final Animation zoom;
-//
-//  Bottom({Key key, this.controller})
-//      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
-//          CurvedAnimation(
-//            parent: controller,
-//            curve: Interval(
-//              0.250,
-//              0.850,
-//              curve: Curves.linear,
-//            ),
-//          ),
-//        ),
-//        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
-//          CurvedAnimation(
-//            parent: controller,
-//            curve: Interval(
-//              0.250,
-//              0.850,
-//              curve: Curves.elasticOut,
-//            ),
-//          ),
-//        ),
-//        super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Transform.scale(
-//      child: Opacity(
-//        opacity: opacity.value,
-//        child: Container(
-//          height: 100,
-//          width: MediaQuery.of(context).size.width,
-//          padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
-//          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
-//          decoration: BoxDecoration(
-//            borderRadius: BorderRadius.only(
-//                bottomLeft: Radius.circular(10.0),
-//                bottomRight: Radius.circular(10.0)),
-//            gradient: LinearGradient(
-//              begin: Alignment.topLeft,
-//              end: Alignment.bottomRight,
-//              // Add one stop for each color. Stops should increase from 0 to 1
-//              stops: [0.1, 0.8],
-//              colors: [
-//                // Colors are easy thanks to Flutter's Colors class.
-//                Color.fromRGBO(101, 121, 155, 1),
-//                Color.fromRGBO(94, 37, 99, 1)
-//              ],
-//            ),
-//          ),
-//          child: Column(
-//            mainAxisAlignment: MainAxisAlignment.center,
-//            children: <Widget>[
-//              Text(
-//                'Bottom Container',
-//                style:
-//                    TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-//              ),
-//            ],
-//          ),
-//        ),
-//      ),
-//      scale: zoom.value,
-//    );
-//  }
-//}
+class Bottom extends StatelessWidget {
+  final AnimationController controller;
+  final Animation opacity;
+  final Animation zoom;
+  final String bankAcc;
+
+  Bottom({Key key, this.controller, this.bankAcc})
+      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.250,
+              0.850,
+              curve: Curves.linear,
+            ),
+          ),
+        ),
+        zoom = Tween<double>(begin: 0.0, end: 1.0).animate(
+          CurvedAnimation(
+            parent: controller,
+            curve: Interval(
+              0.250,
+              0.850,
+              curve: Curves.elasticOut,
+            ),
+          ),
+        ),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.scale(
+      child: Opacity(
+        opacity: opacity.value,
+        child: Container(
+          height: 100,
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.only(bottom: 5.0, top: 5.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 50.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text('Bank account'),
+                  Container(
+                      width: 200.0,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: bankAcc,
+//                        onChanged: (String newValue) {
+//                          setState(() {
+//                            typeValue = newValue;
+//                          });
+//                        },
+                        items: <String>[
+                          'CREDIT',
+                          'CREDIT BAIL ',
+                          'LOA',
+                          'LLD',
+                          'RESERVES OXYGEN'
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      )),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      scale: zoom.value,
+    );
+  }
+}
 
 class CustomButton extends StatelessWidget {
   final GestureTapCallback onTab;
