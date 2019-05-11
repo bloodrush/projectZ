@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/DrawerLogged.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
-import 'simulation.dart';
 
 import '../widgets/cashFlow.dart';
 import 'charts.dart';
@@ -14,7 +13,6 @@ class Dashboard extends StatefulWidget {
 class _Dashboard extends State<Dashboard> {
   int _selectedIndex = 0;
   final _widgetOptions = [
-    SimulationPage(),
     CashFlow(),
     AnimatedPieChartExample(),
   ];
@@ -51,12 +49,6 @@ class _Dashboard extends State<Dashboard> {
             currentIndex: _selectedIndex,
             type: BottomNavigationBarType.shifting,
             items: [
-              BottomNavigationBarItem(
-                icon: Icon(OMIcons.home),
-                title: new Text('Your status'),
-                activeIcon: Icon(Icons.home),
-                backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-              ),
               BottomNavigationBarItem(
                 activeIcon: Icon(Icons.calendar_today),
                 icon: Icon(OMIcons.calendarToday),

@@ -4,9 +4,9 @@
 		"flows": [
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Tigani ot bilata",
-				"loc": "Billata v mahalata",
-				"price": 30
+				"purch": "IBBJ05101",
+				"loc": "INVOICE / PAID",
+				"price": 1400
 			}
 		]
 	},
@@ -15,15 +15,15 @@
 		"flows": [
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Tigani ot bilata",
-				"loc": "Billata v mahalata",
-				"price": 30
+				"purch": "IBBJ05102",
+				"loc": "INVOICE / PAID",
+				"price": 300
 			},
 			{
 				"date": "2019-04-24T16:56:20.725Z",
-				"purch": "Suzdurma ot Kaufland",
-				"loc": "Kauflanda do bitaka",
-				"price": 30
+				"purch": "IBBJ05103",
+				"loc": "INVOICE / UNPAID",
+				"price": 192
 			}
 		]
 	},
@@ -32,27 +32,27 @@
 		"flows": [
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Tigani ot bilata",
-				"loc": "Billata v mahalata",
-				"price": 30
+				"purch": "MDV.004.0001.2017",
+				"loc": "PAYMENT / MATCHED",
+				"price": 3000
 			},
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Tigani ot bilata",
-				"loc": "Billata v mahalata",
-				"price": 30
+				"purch": "MDV.004.0001.2018",
+				"loc": "PAYMENT / UNMATCHED",
+				"price": 1245
 			},
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Tigani ot bilata",
-				"loc": "Billata v mahalata",
-				"price": 30
+				"purch": "IBBJ05101",
+				"loc": "INVOICE / UNPAID",
+				"price": 130
 			},
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Tigani ot bilata",
-				"loc": "Billata v mahalata",
-				"price": 30
+				"purch": "IBBJ05114",
+				"loc": "INVOICE / UNPAID",
+				"price": 1130
 			}
 		]
 	},
@@ -61,9 +61,9 @@
 		"flows": [
 			{
 				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "Sushenicata na bachi Kolio",
-				"loc": "Metro na centara",
-				"price": 60
+				"purch": "MDV.004.0001.2017",
+				"loc": "PAYMENT / MATCHED",
+				"price": 600
 			}
 		]
 	}
