@@ -263,7 +263,9 @@ class _LoginState extends State<Login> {
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: 50,),
+                    SizedBox(
+                      height: 50,
+                    ),
                     Mutation(
                       options: MutationOptions(document: loginMutation),
                       builder: (
@@ -354,7 +356,7 @@ class _LoginState extends State<Login> {
                               )),
                         );
                       },
-                      onCompleted: (QueryResult res) {                        
+                      onCompleted: (QueryResult res) {
                         if (res.errors != null) {
                           setState(() {
                             this._errorText = res.errors[0].message;
@@ -365,7 +367,9 @@ class _LoginState extends State<Login> {
                         }
                       },
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       child: Text(
                         DemoLocalizations.of(context).forgot,
@@ -376,14 +380,18 @@ class _LoginState extends State<Login> {
                             color: Colors.white),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: Divider(
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                         margin: EdgeInsets.only(bottom: 30.0),
                         child: Row(

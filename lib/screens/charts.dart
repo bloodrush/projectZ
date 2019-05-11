@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_chart/flutter_circular_chart.dart';
-import '../widgets/DrawerLogged.dart';
+
 
 final List<List<CircularStackEntry>> _quarterlyProfitPieData = [
   <CircularStackEntry>[
@@ -56,11 +56,11 @@ class AnimatedPieChartExample extends StatefulWidget {
 }
 
 class _AnimatedPieChartExampleState extends State<AnimatedPieChartExample> {
-  final GlobalKey<AnimatedCircularChartState> _chartKey =
-      new GlobalKey<AnimatedCircularChartState>();
+  // final GlobalKey<AnimatedCircularChartState> _chartKey =
+  //     new GlobalKey<AnimatedCircularChartState>();
 
-  final GlobalKey<AnimatedCircularChartState> _chart2Key =
-      new GlobalKey<AnimatedCircularChartState>();
+  // final GlobalKey<AnimatedCircularChartState> _chart2Key =
+  //     new GlobalKey<AnimatedCircularChartState>();
 
   final GlobalKey<AnimatedCircularChartState> _chart3Key =
       new GlobalKey<AnimatedCircularChartState>();

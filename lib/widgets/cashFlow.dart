@@ -137,8 +137,10 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
         CalendarFormat.twoWeeks: 'Compact'
       },
       builders: CalendarBuilders(
-        markersBuilder: (context, date, events) {
-          return Positioned(
+        markersBuilder: (context, date, events, holidays) {
+          final children = <Widget>[];
+
+          children.add(Positioned(
             right: 1,
             bottom: 1,
             child: AnimatedContainer(
@@ -162,7 +164,9 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
                 ),
               ),
             ),
-          );
+          ));
+
+          return children;
         },
       ),
       calendarStyle: CalendarStyle(
