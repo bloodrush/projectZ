@@ -55,10 +55,8 @@ class _LoginState extends State<Login> {
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   DrawerHeader(
-                    child: Center(
-                      child: Image.asset('lib/assets/images/logo-locam.png',
-                          height: 30.0),
-                    ),
+                    child: Image.asset('lib/assets/images/logo-locam.png',
+                        width: 20.0, height: 10.0),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.centerLeft,
@@ -356,7 +354,8 @@ class _LoginState extends State<Login> {
                               )),
                         );
                       },
-                      onCompleted: (QueryResult res) {
+                      onCompleted: (dynamic res) {},
+                      update: (Cache cache, QueryResult res) {
                         if (res.errors != null) {
                           setState(() {
                             this._errorText = res.errors[0].message;

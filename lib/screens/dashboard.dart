@@ -52,7 +52,7 @@ class _Dashboard extends State<Dashboard> {
               BottomNavigationBarItem(
                 activeIcon: Icon(Icons.calendar_today),
                 icon: Icon(OMIcons.calendarToday),
-                title: new Text('Cash flow'),
+                title: new Text('Funding Availability'),
                 backgroundColor: Color.fromRGBO(64, 37, 99, 1),
               ),
               BottomNavigationBarItem(

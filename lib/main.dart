@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
     ValueNotifier<GraphQLClient> client = ValueNotifier(
       GraphQLClient(
         cache: InMemoryCache(),
-        link: httpLink,
+        link: httpLink as Link,
       ),
     );
 

@@ -10,7 +10,7 @@ class StatementsPage extends StatefulWidget {
 class _StatementsPageState extends State<StatementsPage> {
   String _account = '1804040013';
   double _availableAmt = 8144.00;
-  double _totalOutstanding = 2345.00;
+  double _totalOutstanding = 10563.00;
   double _deductions = 220.00;
   double _fiu = 199.00;
   String _contractNumber = 'GB13645';
@@ -156,7 +156,7 @@ class _StatementsPageState extends State<StatementsPage> {
                     case '1804040013':
                       setState(() {
                         _availableAmt = 8144.00;
-                        _totalOutstanding = 2345.00;
+                        _totalOutstanding = 10563.00;
                         _deductions = 220.00;
                         _fiu = 199.00;
                         _contractNumber = 'GB13645';

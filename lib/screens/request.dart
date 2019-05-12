@@ -40,8 +40,7 @@ class RequestPageState extends State<RequestPage>
   void initState() {
     super.initState();
     _controller =
-        AnimationController(duration: Duration(milliseconds: 2200), vsync: this)
-          ..repeat();
+        AnimationController(duration: Duration(milliseconds: 2200), vsync: this);
 
     _controller.forward();
   }
@@ -127,11 +126,11 @@ class Summary extends StatelessWidget {
       this.deductions,
       this.fiu,
       this.account})
-      : opacity = Tween<double>(begin: 0.0, end: 1).animate(
+      : opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.05,
+              0,
               0.500,
               curve: Curves.linear,
             ),
@@ -141,7 +140,7 @@ class Summary extends StatelessWidget {
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.05,
+              0,
               0.500,
               curve: Curves.elasticOut,
             ),
@@ -252,12 +251,12 @@ class Middle extends StatefulWidget {
   final Animation zoom;
 
   Middle({Key key, this.controller, this.amountMax, this.amountValue})
-      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
+      : opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.150,
-              0.650,
+              0.250,
+              0.750,
               curve: Curves.linear,
             ),
           ),
@@ -266,8 +265,8 @@ class Middle extends StatefulWidget {
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.150,
-              0.650,
+              0.250,
+              0.750,
               curve: Curves.elasticOut,
             ),
           ),
@@ -279,8 +278,16 @@ class Middle extends StatefulWidget {
 }
 
 class MiddleState extends State<Middle> {
-  double sliderValue = 1000.00;
-  var myController = TextEditingController();
+  var initValue;
+  double sliderValue;
+  TextEditingController _myController = TextEditingController();
+
+  @override
+  initState() {
+    super.initState();
+    _myController.text = widget.amountMax.toString();
+    sliderValue = widget.amountMax;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -310,12 +317,13 @@ class MiddleState extends State<Middle> {
                               Container(
                                 width: 200.0,
                                 child: TextFormField(
-                                  controller: myController,
+                                  controller: _myController,
+                                  onFieldSubmitted: (e) {               
+                                    setState(() => sliderValue = double.tryParse(e));
+                                  },
                                   textAlign: TextAlign.center,
                                   autocorrect: false,
-//                                  initialValue: '1000',
-                                  keyboardType:
-                                      TextInputType.numberWithOptions(),
+                                  keyboardType: TextInputType.number,
                                   style: TextStyle(
                                       color: Color.fromRGBO(94, 37, 99, 1),
                                       fontSize: 36.0),
@@ -330,18 +338,17 @@ class MiddleState extends State<Middle> {
                           ),
                         ),
                         Slider(
-
                           divisions: 30,
                           activeColor: Color.fromRGBO(94, 37, 99, 1),
-                          label: 'Amount: ' +
-                              widget.amountValue.toStringAsFixed(2),
+                          label: 'Amount: ' + _myController.text,
                           min: 0,
                           max: widget.amountMax,
-//                          onChanged: null,
                           onChanged: (newRating) => {
-                              setState(() => sliderValue = newRating),
-                          myController.text = sliderValue.toStringAsFixed(2)
-                        },
+                                print(newRating),
+                                setState(() => sliderValue = newRating),
+                                _myController.text =
+                                    sliderValue.toStringAsFixed(2)
+                              },
                           value: sliderValue,
                         ),
                         Row(
@@ -371,11 +378,11 @@ class Bottom extends StatelessWidget {
   final String bankAcc;
 
   Bottom({Key key, this.controller, this.bankAcc})
-      : opacity = Tween<double>(begin: 0.3, end: 1).animate(
+      : opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.250,
+              0.450,
               0.850,
               curve: Curves.linear,
             ),
@@ -385,7 +392,7 @@ class Bottom extends StatelessWidget {
           CurvedAnimation(
             parent: controller,
             curve: Interval(
-              0.250,
+              0.450,
               0.850,
               curve: Curves.elasticOut,
             ),
@@ -432,6 +439,7 @@ class Bottom extends StatelessWidget {
                             child: Text(value),
                           );
                         }).toList(),
+                        onChanged: (String value) {},
                       )),
                 ],
               ),
@@ -455,36 +463,36 @@ class CustomButton extends StatelessWidget {
     return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-      RaisedButton(
-        color: Color.fromRGBO(94, 37, 99, 1),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text('BACK', style: TextStyle(color: Colors.white))
-            ],
+          RaisedButton(
+            color: Color.fromRGBO(94, 37, 99, 1),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text('BACK', style: TextStyle(color: Colors.white))
+                ],
+              ),
+            ),
+            onPressed: () {
+              onTab();
+            },
           ),
-        ),
-        onPressed: () {
-          onTab();
-        },
-      ),
-      RaisedButton(
-        color: Color.fromRGBO(94, 37, 99, 1),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text('SUBMIT REQUEST', style: TextStyle(color: Colors.white))
-            ],
-          ),
-        ),
-        onPressed: () {
-          onTab();
-        },
-      )
-    ]);
+          RaisedButton(
+            color: Color.fromRGBO(94, 37, 99, 1),
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text('SUBMIT REQUEST', style: TextStyle(color: Colors.white))
+                ],
+              ),
+            ),
+            onPressed: () {
+              onTab();
+            },
+          )
+        ]);
   }
 }

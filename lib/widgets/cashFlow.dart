@@ -128,38 +128,46 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     return TableCalendar(
       locale: DemoLocalizations.of(context).locale.countryCode,
       events: _visibleEvents,
-      initialCalendarFormat: CalendarFormat.month,
+      initialCalendarFormat: CalendarFormat.twoWeeks,
       formatAnimation: FormatAnimation.scale,
       startingDayOfWeek: StartingDayOfWeek.monday,
       availableGestures: AvailableGestures.all,
       availableCalendarFormats: const {
-        CalendarFormat.month: 'Full',
-        CalendarFormat.twoWeeks: 'Compact'
+        CalendarFormat.month: 'Month',
+        CalendarFormat.twoWeeks: 'Week'
       },
       builders: CalendarBuilders(
         markersBuilder: (context, date, events, holidays) {
           final children = <Widget>[];
+          double sum = 0.00;
+
+          events.forEach((el) {
+            sum = sum + el.price;
+          });    
+
+
 
           children.add(Positioned(
             right: 1,
-            bottom: 1,
+            bottom: 0,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 400),
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
+                shape: BoxShape.rectangle,
                 color: Colors.blueGrey[600],
+                borderRadius: BorderRadius.circular(20),
 //                color: Utils.isSameDay(date, _selectedDay)
 //                    ? Colors.brown[400]
 //                    : Utils.isSameDay(date, DateTime.now()) ? Colors.brown[300] : Colors.deepPurple[400],
               ),
-              width: 16.0,
-              height: 16.0,
+              width: 35.0,
+              height: 20.0,
               child: Center(
                 child: Text(
-                  '${events.length}',
+                  '${sum.round()}',
                   style: TextStyle().copyWith(
                     color: Colors.white,
-                    fontSize: 13.0,
+                    fontSize: 11.0,
                   ),
                 ),
               ),

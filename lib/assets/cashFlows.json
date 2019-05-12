@@ -6,7 +6,7 @@
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "IBBJ05101",
 				"loc": "INVOICE / PAID",
-				"price": 1400
+				"price": 1400.00
 			}
 		]
 	},
@@ -17,13 +17,13 @@
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "IBBJ05102",
 				"loc": "INVOICE / PAID",
-				"price": 300
+				"price": 300.00
 			},
 			{
 				"date": "2019-04-24T16:56:20.725Z",
 				"purch": "IBBJ05103",
 				"loc": "INVOICE / UNPAID",
-				"price": 192
+				"price": 192.00
 			}
 		]
 	},
@@ -34,25 +34,25 @@
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "MDV.004.0001.2017",
 				"loc": "PAYMENT / MATCHED",
-				"price": 3000
+				"price": 3000.00
 			},
 			{
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "MDV.004.0001.2018",
 				"loc": "PAYMENT / UNMATCHED",
-				"price": 1245
+				"price": 1245.00
 			},
 			{
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "IBBJ05101",
 				"loc": "INVOICE / UNPAID",
-				"price": 130
+				"price": 130.00
 			},
 			{
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "IBBJ05114",
 				"loc": "INVOICE / UNPAID",
-				"price": 1130
+				"price": 1130.00
 			}
 		]
 	},
@@ -63,7 +63,7 @@
 				"date": "2019-04-22T16:56:20.725Z",
 				"purch": "MDV.004.0001.2017",
 				"loc": "PAYMENT / MATCHED",
-				"price": 600
+				"price": 600.00
 			}
 		]
 	}

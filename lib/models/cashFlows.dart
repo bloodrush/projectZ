@@ -30,7 +30,7 @@ class FlowModel {
   final String date;
   final String purchase;
   final String loc;
-  final int price;
+  final double price;
 
   FlowModel({this.date, this.purchase, this.price,this.loc});
 
