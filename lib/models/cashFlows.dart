@@ -38,7 +38,7 @@ class FlowModel {
     return FlowModel(
         date: parsedJson['date'],
         purchase: parsedJson['purch'],
-        price: parsedJson['price'],
+        price: parsedJson['price'] as double,
         loc: parsedJson['loc']);
   }
 }

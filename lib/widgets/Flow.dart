@@ -76,7 +76,7 @@ class Event extends StatelessWidget {
                                     color: Colors.white,
                                   ),
                                   Text(
-                                    '${event.price.toString()}',
+                                    '${event.price}0',
                                     style: TextStyle(color: Colors.white),
                                     textAlign: TextAlign.end,
                                   ),

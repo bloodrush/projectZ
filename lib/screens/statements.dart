@@ -217,7 +217,7 @@ class _StatementsPageState extends State<StatementsPage> {
                     ),
                   ),
                 ),
-                Text(_availableAmt.toString(),
+                Text(_availableAmt.toStringAsFixed(2),
                     style: TextStyle(
                         color: Color.fromRGBO(94, 37, 99, 1), fontSize: 36.0)),
                 Text('Available amount',
@@ -236,7 +236,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(_totalOutstanding.toString(),
+                          Text(_totalOutstanding.toStringAsFixed(2),
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -251,7 +251,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(_deductions.toString(),
+                          Text(_deductions.toStringAsFixed(2),
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -266,7 +266,7 @@ class _StatementsPageState extends State<StatementsPage> {
                       flex: 1,
                       child: Column(
                         children: <Widget>[
-                          Text(_fiu.toString(),
+                          Text(_fiu.toStringAsFixed(2),
                               style: TextStyle(
                                   color: Color.fromRGBO(101, 121, 155, 1),
                                   fontSize: 18.0)),
@@ -354,21 +354,21 @@ class _StatementsPageState extends State<StatementsPage> {
                         ],
                       ),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Column(
-                        children: <Widget>[
-                          Text(_supplier,
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 121, 155, 1),
-                                  fontSize: 18.0)),
-                          Text('Supplier',
-                              style: TextStyle(
-                                  color: Color.fromRGBO(101, 121, 155, 1),
-                                  fontSize: 12.0)),
-                        ],
-                      ),
-                    ),
+                    // Expanded(
+                    //   flex: 1,
+                    //   child: Column(
+                    //     children: <Widget>[
+                    //       Text(_supplier,
+                    //           style: TextStyle(
+                    //               color: Color.fromRGBO(101, 121, 155, 1),
+                    //               fontSize: 18.0)),
+                    //       Text('Supplier',
+                    //           style: TextStyle(
+                    //               color: Color.fromRGBO(101, 121, 155, 1),
+                    //               fontSize: 12.0)),
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 )
               ],

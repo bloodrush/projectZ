@@ -188,7 +188,7 @@ class Summary extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Text(availableAmt.toString(),
+              Text(availableAmt.toStringAsFixed(2),
                   style: TextStyle(color: Colors.white, fontSize: 36.0)),
               Text('Available amount',
                   style: TextStyle(color: Colors.white, fontSize: 18.0)),
@@ -203,7 +203,7 @@ class Summary extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      Text(totalOutstanding.toString(),
+                      Text(totalOutstanding.toStringAsFixed(2),
                           style:
                               TextStyle(color: Colors.white, fontSize: 18.0)),
                       Text('Total outstanding',
@@ -213,7 +213,7 @@ class Summary extends StatelessWidget {
                   ),
                   Column(
                     children: <Widget>[
-                      Text(deductions.toString(),
+                      Text(deductions.toStringAsFixed(2),
                           style:
                               TextStyle(color: Colors.white, fontSize: 18.0)),
                       Text('Deductions',
@@ -223,7 +223,7 @@ class Summary extends StatelessWidget {
                   ),
                   Column(
                     children: <Widget>[
-                      Text(fiu.toString(),
+                      Text(fiu.toStringAsFixed(2),
                           style:
                               TextStyle(color: Colors.white, fontSize: 18.0)),
                       Text('Funds in use',
@@ -285,7 +285,7 @@ class MiddleState extends State<Middle> {
   @override
   initState() {
     super.initState();
-    _myController.text = widget.amountMax.toString();
+    _myController.text = widget.amountMax.toStringAsFixed(2);
     sliderValue = widget.amountMax;
   }
 
@@ -296,8 +296,8 @@ class MiddleState extends State<Middle> {
         opacity: widget.opacity.value,
         child: InkWell(
           onTap: () {
-            print('tab');
-            widget.controller.reverse();
+            // print('tab');
+            // widget.controller.reverse();
           },
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -356,7 +356,7 @@ class MiddleState extends State<Middle> {
                           children: <Widget>[
                             Text('0.00'),
                             Text('Amount'),
-                            Text(widget.amountMax.toString())
+                            Text(widget.amountMax.toStringAsFixed(2))
                           ],
                         ),
                       ],
