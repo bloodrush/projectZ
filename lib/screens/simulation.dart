@@ -21,7 +21,6 @@ class _SimulationPageState extends State<SimulationPage> {
   double durationMax = 60;
   double durationValue = 32;
 
-
   dynamic _showDialog() {
     // flutter defined function
     showDialog(
@@ -62,17 +61,7 @@ class _SimulationPageState extends State<SimulationPage> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(''),
-              Text('SIMULATION', style: TextStyle(fontSize: 18.0)),
-              Text(
-                '',
-                style: TextStyle(fontSize: 18.0),
-              )
-            ],
-          ),
+          title: Text('Simulation'),
         ),
         body: ListView(
           shrinkWrap: true,
@@ -404,13 +393,12 @@ class _SimulationPageState extends State<SimulationPage> {
                       Container(
                           margin: EdgeInsets.only(top: 20.0),
                           child: RaisedButton(
-                            color: Color.fromRGBO(94, 37, 99, 1),
-                            child: Text(
-                              'AGREE & CONTINUE',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            onPressed: _showDialog
-                          )),
+                              color: Color.fromRGBO(94, 37, 99, 1),
+                              child: Text(
+                                'AGREE & CONTINUE',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onPressed: _showDialog)),
                     ],
                   ),
                 ],

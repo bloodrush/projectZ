@@ -11,11 +11,10 @@ class _OffersState extends State<OffersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-            title: Center(
-              child: Text('OFFERS'),
-            )),
+          centerTitle: true,
+          backgroundColor: Color.fromRGBO(94, 37, 99, 1),
+          title: Text('Offers'),
+        ),
         drawer: LoggedDrawer(),
         body: Center(child: Text('hello from Offers page')));
   }

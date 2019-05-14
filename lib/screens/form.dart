@@ -19,17 +19,7 @@ class _FormPageState extends State<FormPage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(''),
-            Text('CLIENT INFO', style: TextStyle(fontSize: 18.0)),
-            Text(
-              '',
-              style: TextStyle(fontSize: 18.0),
-            )
-          ],
-        ),
+        title: Text('Client Info'),
       ),
       body: ListView(
         shrinkWrap: true,
@@ -87,9 +77,7 @@ class _FormPageState extends State<FormPage> {
                                 icon: Icon(Icons.search), onPressed: () {},
 //                                onPressed: _showDialog(),
                               ),
-                            )
-                        )
-                    )
+                            )))
                   ],
                 ),
                 Row(
@@ -169,7 +157,7 @@ class _FormPageState extends State<FormPage> {
                             onPressed: () {
                               final snackBar = SnackBar(
                                   content:
-                                  Text('You request has been submitted.'));
+                                      Text('You request has been submitted.'));
                               _scaffoldKey.currentState.showSnackBar(snackBar);
                             },
                           )

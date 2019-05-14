@@ -26,17 +26,7 @@ class _StatementsPageState extends State<StatementsPage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(''),
-            Text('STATEMENTS', style: TextStyle(fontSize: 18.0)),
-            Text(
-              '',
-              style: TextStyle(fontSize: 18.0),
-            )
-          ],
-        ),
+        title: Text('Statements'),
       ),
       body: Column(
         children: <Widget>[

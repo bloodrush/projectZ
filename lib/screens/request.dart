@@ -39,8 +39,8 @@ class RequestPageState extends State<RequestPage>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(duration: Duration(milliseconds: 2200), vsync: this);
+    _controller = AnimationController(
+        duration: Duration(milliseconds: 2200), vsync: this);
 
     _controller.forward();
   }
@@ -68,17 +68,7 @@ class RequestPageState extends State<RequestPage>
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(''),
-            Text('REQUEST FINANCING', style: TextStyle(fontSize: 18.0)),
-            Text(
-              '',
-              style: TextStyle(fontSize: 18.0),
-            )
-          ],
-        ),
+        title: Text('Request Financing'),
       ),
       body: AnimatedBuilder(
         builder: (context, child) => ListView(
@@ -318,8 +308,9 @@ class MiddleState extends State<Middle> {
                                 width: 200.0,
                                 child: TextFormField(
                                   controller: _myController,
-                                  onFieldSubmitted: (e) {               
-                                    setState(() => sliderValue = double.tryParse(e));
+                                  onFieldSubmitted: (e) {
+                                    setState(
+                                        () => sliderValue = double.tryParse(e));
                                   },
                                   textAlign: TextAlign.center,
                                   autocorrect: false,
