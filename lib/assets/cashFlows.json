@@ -3,21 +3,21 @@
 		"offset": 0,
 		"flows": [
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "4",
 				"purch": "IBBJ05101",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 1400.0
 			},
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05102",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 300.0
 			},
 			{
-				"date": "2019-04-24T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05103",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 192.0
 			}
 		]
@@ -26,21 +26,21 @@
 		"offset": 1,
 		"flows": [
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "4",
 				"purch": "IBBJ05101",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 1400.0
 			},
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05102",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 300.0
 			},
 			{
-				"date": "2019-04-24T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05103",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 192.0
 			}
 		]
@@ -49,21 +49,21 @@
 		"offset": 2,
 		"flows": [
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "4",
 				"purch": "IBBJ05101",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 1400.0
 			},
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05102",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 300.0
 			},
 			{
-				"date": "2019-04-24T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05103",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 192.0
 			}
 		]
@@ -72,27 +72,27 @@
 		"offset": 3,
 		"flows": [
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "4",
 				"purch": "IBBJ05101",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 1400.0
 			},
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05102",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 300.0
 			},
 			{
-				"date": "2019-04-24T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05103",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 192.0
 			},
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "15",
 				"purch": "IBBJ05104",
-				"loc": "INVOICE / UNPAID",
+				"loc": "INVOICE",
 				"price": 600.0
 			}
 		]
@@ -101,21 +101,21 @@
 		"offset": 4,
 		"flows": [
 			{
-				"date": "2019-04-22T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05102",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 300.0
 			},
 			{
-				"date": "2019-04-24T16:56:20.725Z",
+				"date": "10",
 				"purch": "IBBJ05103",
-				"loc": "INVOICE / PAID",
+				"loc": "INVOICE",
 				"price": 192.0
 			},
 			{
-				"date": "2019-04-22T16:56:20.725Z",
-				"purch": "MDV.004.0001.2017",
-				"loc": "INVOICE / UNPAID",
+				"date": "15",
+				"purch": "IBBJ05104",
+				"loc": "INVOICE",
 				"price": 600.0
 			}
 		]

@@ -6,6 +6,16 @@ class Event extends StatelessWidget {
   const Event({Key key, this.selectedEvents}) : super(key: key);
 
   List<Widget> _listEvents(BuildContext context) {
+    String getDueDate(offset) {
+      var today = new DateTime.now();
+      
+      var relativeDate = today.add(new Duration(days: int.parse(offset)));
+      String formatedYear =
+          '${relativeDate.day}.0${relativeDate.month}.${relativeDate.year}';
+
+      return formatedYear;
+    }
+
     if (selectedEvents.length > 0) {
       return selectedEvents
           .map(
@@ -55,13 +65,18 @@ class Event extends StatelessWidget {
                                     padding: EdgeInsets.only(
                                         left: 12.0, bottom: 12.0),
                                     width: MediaQuery.of(context).size.width,
-                                    child: Text(event.loc,
-                                        textAlign: TextAlign.start,
-                                        style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          color: Colors.white,
-                                          fontSize: 15.0,
-                                        )))
+                                    child: Row(
+                                      children: <Widget>[
+                                        Text(
+                                            '${event.loc} / Due: ${getDueDate(event.date)}',
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                              fontStyle: FontStyle.italic,
+                                              color: Colors.white,
+                                              fontSize: 15.0,
+                                            )),
+                                      ],
+                                    ))
                               ],
                             ),
                           ),

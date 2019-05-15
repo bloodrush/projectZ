@@ -8,7 +8,7 @@ class StatementsPage extends StatefulWidget {
 }
 
 class _StatementsPageState extends State<StatementsPage> {
-  String _account = '1804040013';
+  String _account = 'US00235 / 1804040013';
   double _availableAmt = 8144.00;
   double _totalOutstanding = 10563.00;
   double _deductions = 220.00;
@@ -130,7 +130,7 @@ class _StatementsPageState extends State<StatementsPage> {
                   });
 
                   switch (newValue) {
-                    case '1804040014':
+                    case 'US00452 / 1804040014':
                       setState(() {
                         _availableAmt = 4286.00;
                         _totalOutstanding = 5500.00;
@@ -143,7 +143,7 @@ class _StatementsPageState extends State<StatementsPage> {
                         _supplier = 'FACTORIX';
                       });
                       break;
-                    case '1804040013':
+                    case 'US00235 / 1804040013':
                       setState(() {
                         _availableAmt = 8144.00;
                         _totalOutstanding = 10563.00;
@@ -156,7 +156,7 @@ class _StatementsPageState extends State<StatementsPage> {
                         _supplier = 'ASSURIX';
                       });
                       break;
-                    case '1804050003':
+                    case 'US00333 / 1804050003':
                       setState(() {
                         _availableAmt = 1244.00;
                         _totalOutstanding = 122.12;
@@ -171,9 +171,9 @@ class _StatementsPageState extends State<StatementsPage> {
                   }
                 },
                 items: <String>[
-                  '1804040013',
-                  '1804040014',
-                  '1804050003',
+                  'US00235 / 1804040013',
+                  'US00452 / 1804040014',
+                  'US00333 / 1804050003',
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
