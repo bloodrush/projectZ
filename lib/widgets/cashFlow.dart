@@ -143,15 +143,13 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
 
           events.forEach((el) {
             sum = sum + el.price;
-          });    
-
-
+          });
 
           children.add(Positioned(
             right: 0,
             bottom: 0,
             child: AnimatedContainer(
-              padding: EdgeInsets.symmetric(horizontal: 2.0,vertical:0.0 ),
+              padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 0.0),
               duration: const Duration(milliseconds: 400),
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
@@ -161,23 +159,20 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
 //                    ? Colors.brown[400]
 //                    : Utils.isSameDay(date, DateTime.now()) ? Colors.brown[300] : Colors.deepPurple[400],
               ),
-              width:52.0,
+              width: 52.0,
               height: 20.0,
               child: Center(
-                child: Text(               
+                child: Text(
                   '${sum.toStringAsFixed(2)}',
-                  textAlign:TextAlign.center,
+                  textAlign: TextAlign.center,
                   style: TextStyle().copyWith(
-                    color: Colors.white,
-                    fontSize: 11.0,
-                    fontWeight: FontWeight.w600
-                  ),
+                      color: Colors.white,
+                      fontSize: 11.0,
+                      fontWeight: FontWeight.w600),
                 ),
               ),
             ),
           ));
-
-          return children;
         },
       ),
       calendarStyle: CalendarStyle(

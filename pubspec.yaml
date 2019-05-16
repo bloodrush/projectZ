@@ -33,6 +33,7 @@ dependencies:
   flutter_circular_chart: ^0.1.0
   outline_material_icons: ^0.1.0
   google_maps_flutter: ^0.5.7
+  flutter_map: any
 
 dev_dependencies:
   flutter_test:
