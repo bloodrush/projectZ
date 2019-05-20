@@ -27,7 +27,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final routes = {
-    '/': (context) => Dashboard(),
+    '/': (context) => Login(),
     '/simulation': (context) => SimulationPage(),
     '/dashboard': (context) => Dashboard(),
     '/form': (context) => FormPage(),
