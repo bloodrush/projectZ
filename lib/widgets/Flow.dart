@@ -43,7 +43,7 @@ class Event extends StatelessWidget {
                       ),
                       shape: BoxShape.rectangle),
                   margin: const EdgeInsets.symmetric(
-                      horizontal: 8.0, vertical: 7.0),
+                      horizontal: 8.0, vertical: 4.0),
                   child: Stack(
                     children: <Widget>[
                       Row(
