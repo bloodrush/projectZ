@@ -124,6 +124,55 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     // );
   }
 
+  dynamic _TodayDecorator(isToday, isSel) {
+    const today = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      // Add one stop for each color. Stops should increase from 0 to 1
+      stops: [0.1, 0.8],
+      colors: [
+        // Colors are easy thanks to Flutter's Colors class.
+        Color.fromRGBO(101, 121, 155, 1),
+        Color.fromRGBO(94, 37, 99, 1)
+      ],
+    );
+
+    const notToday = LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      // Add one stop for each color. Stops should increase from 0 to 1
+      stops: [0.1, 0.8],
+      colors: [
+        // Colors are easy thanks to Flutter's Colors class.
+        Colors.white,
+        Colors.white
+      ],
+    );
+
+    if (isToday || isSel) {
+      return today;
+    } else {
+      return notToday;
+    }
+  }
+
+  bool checkIsToday(widgetDate) {
+    final todayDate = DateTime.now();
+    final bool isToday = todayDate.day == widgetDate.day &&
+        todayDate.month == widgetDate.month &&
+        todayDate.year == widgetDate.year;
+
+    return isToday;
+  }
+
+  bool checkIsSelected(widgetDate) {
+    final bool isSelected = _selectedDay.day == widgetDate.day &&
+        _selectedDay.month == widgetDate.month &&
+        _selectedDay.year == widgetDate.year;
+
+    return isSelected;
+  }
+
   Widget _buildTableCalendar() {
     return TableCalendar(
       locale: DemoLocalizations.of(context).locale.countryCode,
@@ -137,7 +186,33 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
         CalendarFormat.twoWeeks: 'Week'
       },
       builders: CalendarBuilders(
+        dayBuilder: (context, date, test) {
+          var isToday = checkIsToday(date);
+          var isSelected = checkIsSelected(date);
+
+          return Opacity(
+            opacity: isSelected ? 1 : 0.6,
+            child: AnimatedContainer(
+              height: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
+                gradient: _TodayDecorator(isToday, isSelected),
+              ),
+              child: Center(
+                  child: Text(
+                date.day.toString(),
+                style: TextStyle(
+                    fontSize: 20,
+                    color:
+                        isToday || isSelected ? Colors.white : Colors.black54),
+              )),
+              duration: Duration(milliseconds: 400),
+            ),
+          );
+        },
         markersBuilder: (context, date, events, holidays) {
+          var isToday = checkIsToday(date);
+          var isSelected = checkIsSelected(date);
           final children = <Widget>[];
           double sum = 0.00;
 
@@ -146,34 +221,44 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
           });
 
           children.add(Positioned(
-            right: 0,
-            bottom: 0,
-            child: AnimatedContainer(
-              padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 0.0),
-              duration: const Duration(milliseconds: 400),
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                color: Colors.blueGrey[600],
-                borderRadius: BorderRadius.circular(20),
+            bottom: -1,
+            child: Center(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 400),
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  // color: Colors.blueGrey[600],
 //                color: Utils.isSameDay(date, _selectedDay)
 //                    ? Colors.brown[400]
 //                    : Utils.isSameDay(date, DateTime.now()) ? Colors.brown[300] : Colors.deepPurple[400],
-              ),
-              width: 52.0,
-              height: 20.0,
-              child: Center(
-                child: Text(
-                  '${sum.toStringAsFixed(2)}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle().copyWith(
-                      color: Colors.white,
-                      fontSize: 11.0,
-                      fontWeight: FontWeight.w600),
+                ),
+                width: 55.0,
+                height: 20.0,
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.euro_symbol,
+                      color: isToday || isSelected
+                          ? Colors.white
+                          : Colors.blueGrey[600],
+                      size: 12.0,
+                    ),
+                    Text(
+                      '${sum.toStringAsFixed(2)}',
+                      textAlign: TextAlign.right,
+                      style: TextStyle().copyWith(
+                          color: isToday || isSelected
+                              ? Colors.white
+                              : Colors.blueGrey[600],
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
                 ),
               ),
             ),
           ));
-        
+
           return children;
         },
       ),
