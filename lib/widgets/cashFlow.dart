@@ -193,6 +193,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
           return Opacity(
             opacity: isSelected ? 1 : 0.6,
             child: AnimatedContainer(
+              margin: EdgeInsets.symmetric(horizontal: 1.0),
               height: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
@@ -278,17 +279,6 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
             )
           ],
           borderRadius: BorderRadius.circular(16.0),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            // Add one stop for each color. Stops should increase from 0 to 1
-            stops: [0.1, 0.8],
-            colors: [
-              // Colors are easy thanks to Flutter's Colors class.
-              Color.fromRGBO(101, 121, 155, 1),
-              Color.fromRGBO(94, 37, 99, 1)
-            ],
-          ),
         ),
       ),
       onDaySelected: _onDaySelected,
