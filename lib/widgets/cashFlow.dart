@@ -124,28 +124,21 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
     // );
   }
 
-  dynamic _TodayDecorator(isToday, isSel) {
+  dynamic _todayDecorator(isToday, isSel) {
     const today = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      // Add one stop for each color. Stops should increase from 0 to 1
       stops: [0.1, 0.8],
-      colors: [
-        // Colors are easy thanks to Flutter's Colors class.
-        Color.fromRGBO(101, 121, 155, 1),
-        Color.fromRGBO(94, 37, 99, 1)
-      ],
+      colors: [Color.fromRGBO(101, 121, 155, 1), Color.fromRGBO(94, 37, 99, 1)],
     );
 
     const notToday = LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      // Add one stop for each color. Stops should increase from 0 to 1
       stops: [0.1, 0.8],
       colors: [
-        // Colors are easy thanks to Flutter's Colors class.
-        Colors.white,
-        Colors.white
+        Color.fromRGBO(235, 235, 235, 0.4),
+        Color.fromRGBO(235, 235, 235, 0.4)
       ],
     );
 
@@ -193,11 +186,11 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
           return Opacity(
             opacity: isSelected ? 1 : 0.6,
             child: AnimatedContainer(
-              margin: EdgeInsets.symmetric(horizontal: 1.0),
+              margin: EdgeInsets.all(1.0),
               height: 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.elliptical(10, 10)),
-                gradient: _TodayDecorator(isToday, isSelected),
+                gradient: _todayDecorator(isToday, isSelected),
               ),
               child: Center(
                   child: Text(
@@ -222,7 +215,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
           });
 
           children.add(Positioned(
-            bottom: -1,
+            bottom: 0,
             child: Center(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 400),
@@ -233,27 +226,34 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
 //                    ? Colors.brown[400]
 //                    : Utils.isSameDay(date, DateTime.now()) ? Colors.brown[300] : Colors.deepPurple[400],
                 ),
-                width: 55.0,
+                width: 56.0,
                 height: 20.0,
                 child: Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.euro_symbol,
-                      color: isToday || isSelected
-                          ? Colors.white
-                          : Colors.blueGrey[600],
-                      size: 12.0,
+                    Expanded(
+                      flex: 1,
+                      child: Icon(
+                        Icons.euro_symbol,
+                        color: isToday || isSelected
+                            ? Colors.white
+                            : Colors.blueGrey[600],
+                        size: 12.0,
+                      ),
                     ),
-                    Text(
-                      '${sum.toStringAsFixed(2)}',
-                      textAlign: TextAlign.right,
-                      style: TextStyle().copyWith(
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        '${sum.toStringAsFixed(2)}',
+                        textAlign: TextAlign.left,
+                        style: TextStyle().copyWith(
                           color: isToday || isSelected
                               ? Colors.white
                               : Colors.blueGrey[600],
+                           fontWeight: FontWeight.w200,   
                           fontSize: 10.0,
-                          fontWeight: FontWeight.w600),
-                    ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
