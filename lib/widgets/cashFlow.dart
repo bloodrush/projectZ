@@ -215,7 +215,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
           });
 
           children.add(Positioned(
-            bottom: 0,
+            bottom:-1,
             child: Center(
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 400),
