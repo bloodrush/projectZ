@@ -108,7 +108,7 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
                 // Switch out 2 lines below to play with TableCalendar's settings
                 //-----------------------
                 _buildTableCalendar(),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 3.0),
                 Expanded(child: Event(selectedEvents: _selectedEvents)),
               ],
             );
@@ -137,8 +137,8 @@ class _CashFlowState extends State<CashFlow> with TickerProviderStateMixin {
       end: Alignment.bottomRight,
       stops: [0.1, 0.8],
       colors: [
-        Color.fromRGBO(235, 235, 235, 0.4),
-        Color.fromRGBO(235, 235, 235, 0.4)
+        Color.fromRGBO(235, 235, 235, 0.3),
+        Color.fromRGBO(235, 235, 235, 0.3)
       ],
     );
 
