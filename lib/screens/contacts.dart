@@ -54,7 +54,7 @@ class ContactsPageState extends State<ContactsPage> {
                     "{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}",
                 additionalOptions: {
                   'accessToken':
-                      'pk.eyJ1IjoicmV0cm9zcGN0IiwiYSI6ImNqOG85dTFrbzAweWIzMHVtNWtuY2w3ZXIifQ.sVRc4IpzYH2Bl90FlxNzPQgity',
+                      'pk.eyJ1IjoicmV0cm9zcGN0IiwiYSI6ImNqOG85dTFrbzAweWIzMHVtNWtuY2w3ZXIifQ.sVRc4IpzYH2Bl90FlxNzPQ',
                   'id': 'mapbox.streets',
                 },
               ),
