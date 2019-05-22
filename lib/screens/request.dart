@@ -472,7 +472,7 @@ class CustomButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              onTab();r
+              onTab();
             },
           ),
           RaisedButton(
@@ -488,12 +488,15 @@ class CustomButton extends StatelessWidget {
             ),
 
             onPressed: () {
-              final snackBar = SnackBar(content: Text('You request has been submitted.'),action:SnackBarAction(
-              label: 'View',
-              onPressed: () {
-                // Some code to undo the change!
-              },
-                 ) ,);
+              final snackBar = SnackBar(
+                content: Text('You request has been submitted.'),
+                action: SnackBarAction(
+                  label: 'View',
+                  onPressed: () {
+                    // Some code to undo the change!
+                  },
+                ),
+              );
               Scaffold.of(context).showSnackBar(snackBar);
             },
 
