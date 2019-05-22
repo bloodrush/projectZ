@@ -64,11 +64,12 @@ class RequestPageState extends State<RequestPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       drawer: LoggedDrawer(),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-        title: Text('Request Financing'),
+        title: Text('Request Funding'),
       ),
       body: AnimatedBuilder(
         builder: (context, child) => ListView(
@@ -362,11 +363,16 @@ class MiddleState extends State<Middle> {
   }
 }
 
-class Bottom extends StatelessWidget {
+class Bottom extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _BottomState();
+}
+class _BottomState extends State<Bottom> {
+
   final AnimationController controller;
   final Animation opacity;
   final Animation zoom;
-  final String bankAcc;
+  String bankAcc;
 
   Bottom({Key key, this.controller, this.bankAcc})
       : opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -419,18 +425,20 @@ class Bottom extends StatelessWidget {
 //                          });
 //                        },
                         items: <String>[
-                          'CREDIT',
-                          'CREDIT BAIL ',
-                          'LOA',
-                          'LLD',
-                          'RESERVES OXYGEN'
+                          '9908749871',
+                          '1206944571',
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
                             child: Text(value),
                           );
                         }).toList(),
-                        onChanged: (String value) {},
+                        onChanged: (String value) {
+                          setState() {
+                            bankAcc = value;
+                          }
+
+                        },
                       )),
                 ],
               ),
@@ -479,9 +487,17 @@ class CustomButton extends StatelessWidget {
                 ],
               ),
             ),
+
             onPressed: () {
-              onTab();
+              final snackBar = SnackBar(
+                  content:
+                  Text('You request has been submitted.'));
+              Scaffold.of(context).showSnackBar(snackBar);
             },
+
+//            onPressed: () {
+//              onTab();
+//            },
           )
         ]);
   }

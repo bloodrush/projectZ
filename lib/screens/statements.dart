@@ -380,7 +380,9 @@ class _StatementsPageState extends State<StatementsPage> {
                           ),
                         ),
                       );
-                    }),
+                    }
+
+                    ),
               ),
             ],
           ),
