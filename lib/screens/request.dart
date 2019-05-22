@@ -362,13 +362,12 @@ class MiddleState extends State<Middle> {
   }
 }
 
-class Bottom extends StatelessWidget {
+class Bottom extends StatefulWidget {
   final AnimationController controller;
   final Animation opacity;
   final Animation zoom;
-  final String bankAcc;
 
-  Bottom({Key key, this.controller, this.bankAcc})
+  Bottom({Key key, this.controller})
       : opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
           CurvedAnimation(
             parent: controller,
@@ -392,10 +391,17 @@ class Bottom extends StatelessWidget {
         super(key: key);
 
   @override
+  State<StatefulWidget> createState() => BottomState();
+}
+
+class BottomState extends State<Bottom> {
+  var bankAcc;
+
+  @override
   Widget build(BuildContext context) {
     return Transform.scale(
       child: Opacity(
-        opacity: opacity.value,
+        opacity: widget.opacity.value,
         child: Container(
           height: 100,
           width: MediaQuery.of(context).size.width,
@@ -430,7 +436,11 @@ class Bottom extends StatelessWidget {
                             child: Text(value),
                           );
                         }).toList(),
-                        onChanged: (String value) {},
+                        onChanged: (String value) {
+                          setState(() {
+                            bankAcc = value;
+                          });
+                        },
                       )),
                 ],
               ),
@@ -438,7 +448,7 @@ class Bottom extends StatelessWidget {
           ),
         ),
       ),
-      scale: zoom.value,
+      scale: widget.zoom.value,
     );
   }
 }
