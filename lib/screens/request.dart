@@ -68,7 +68,7 @@ class RequestPageState extends State<RequestPage>
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Color.fromRGBO(94, 37, 99, 1),
-        title: Text('Request Financing'),
+        title: Text('Request Funding'),
       ),
       body: AnimatedBuilder(
         builder: (context, child) => ListView(
@@ -425,11 +425,8 @@ class BottomState extends State<Bottom> {
 //                          });
 //                        },
                         items: <String>[
-                          'CREDIT',
-                          'CREDIT BAIL ',
-                          'LOA',
-                          'LLD',
-                          'RESERVES OXYGEN'
+                          '9908749871',
+                          '1206944571',
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
@@ -475,7 +472,7 @@ class CustomButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              onTab();
+              onTab();r
             },
           ),
           RaisedButton(
@@ -489,9 +486,20 @@ class CustomButton extends StatelessWidget {
                 ],
               ),
             ),
+
             onPressed: () {
-              onTab();
+              final snackBar = SnackBar(content: Text('You request has been submitted.'),action:SnackBarAction(
+              label: 'View',
+              onPressed: () {
+                // Some code to undo the change!
+              },
+                 ) ,);
+              Scaffold.of(context).showSnackBar(snackBar);
             },
+
+//            onPressed: () {
+//              onTab();
+//            },
           )
         ]);
   }
